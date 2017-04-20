@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
-
+// This is another test
 namespace WebApplicationBasic
 {
     public class Program
@@ -17,7 +17,7 @@ namespace WebApplicationBasic
                 .UseIISIntegration()
                 .UseStartup<Startup>()
                 .Build();
-            //This is  test
+
             host.Run();
         }
     }
