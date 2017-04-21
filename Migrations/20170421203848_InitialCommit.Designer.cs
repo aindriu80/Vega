@@ -8,8 +8,8 @@ using Vega.Models;
 namespace Vega.Migrations
 {
     [DbContext(typeof(VegaDbContext))]
-    [Migration("20170421195639_LookupClass")]
-    partial class LookupClass
+    [Migration("20170421203848_InitialCommit")]
+    partial class InitialCommit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -17,7 +17,7 @@ namespace Vega.Migrations
                 .HasAnnotation("ProductVersion", "1.1.1")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Vega.Models.Make", b =>
+            modelBuilder.Entity("Vega.Models.Makes", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -51,7 +51,7 @@ namespace Vega.Migrations
 
             modelBuilder.Entity("Vega.Models.Model", b =>
                 {
-                    b.HasOne("Vega.Models.Make", "Make")
+                    b.HasOne("Vega.Models.Makes", "Make")
                         .WithMany("Models")
                         .HasForeignKey("MakeId")
                         .OnDelete(DeleteBehavior.Cascade);

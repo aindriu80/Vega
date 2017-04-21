@@ -28,7 +28,6 @@ namespace Vega.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Make = table.Column<string>(nullable: true),
                     MakeId = table.Column<int>(nullable: false),
                     Name = table.Column<string>(maxLength: 255, nullable: false)
                 },
