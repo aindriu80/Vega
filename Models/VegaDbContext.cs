@@ -15,14 +15,14 @@ namespace Vega.Models
         {
         }
 
-        public DbSet<Makes> Makes { get; set; }
+        public DbSet<Make> Makes { get; set; }
         public DbSet<Model> Models { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Makes>().ToTable("Make");
-            modelBuilder.Entity<Model>().ToTable("Model");
-        }
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Make>().ToTable("Make");
+        //    modelBuilder.Entity<Model>().ToTable("Model");
+        //}
 
     }
 }

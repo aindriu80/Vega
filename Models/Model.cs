@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Vega.Models
 {
-    [Table("Models")]
+    
     public class Model
     {
         [Required]
@@ -16,7 +16,7 @@ namespace Vega.Models
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
-        public Makes Make { get; set; }
+        public Make Make { get; set; }
         public int MakeId { get; set; }
     }
 }
