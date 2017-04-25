@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5767800c9635745c9dad"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "11e09adca8d17003782e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -2058,7 +2058,7 @@ module.exports = "<h1>Weather forecast</h1>\r\n\r\n<p>This component demonstrate
 /* 24 */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Hello, world!</h1>\r\n<p>Welcome to your new single-page application, built with:</p>\r\n<ul>\r\n    <li><a href='https://get.asp.net/'>ASP.NET Core</a> and <a href='https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx'>C#</a> for cross-platform server-side code</li>\r\n    <li><a href='https://angular.io/'>Angular 2</a> and <a href='http://www.typescriptlang.org/'>TypeScript</a> for client-side code</li>\r\n    <li><a href='https://webpack.github.io/'>Webpack</a> for building and bundling client-side resources</li>\r\n    <li><a href='http://getbootstrap.com/'>Bootstrap</a> for layout and styling</li>\r\n</ul>\r\n<p>To help you get started, we've also set up:</p>\r\n<ul>\r\n    <li><strong>Client-side navigation</strong>. For example, click <em>Counter</em> then <em>Back</em> to return here.</li>\r\n    <li><strong>Server-side prerendering</strong>. For faster initial loading and improved SEO, your Angular 2 app is prerendered on the server. The resulting HTML is then transferred to the browser where a client-side copy of the app takes over.</li>\r\n    <li><strong>Webpack dev middleware</strong>. In development mode, there's no need to run the <code>webpack</code> build tool. Your client-side resources are dynamically built on demand. Updates are available as soon as you modify any file.</li>\r\n    <li><strong>Hot module replacement</strong>. In development mode, you don't even need to reload the page after making most changes. Within seconds of saving changes to files, your Angular 2 app will be rebuilt and a new instance injected is into the page.</li>\r\n    <li><strong>Efficient production builds</strong>. In production mode, development-time features are disabled, and the <code>webpack</code> build tool produces minified static CSS and JavaScript files.</li>\r\n</ul>\r\n";
+module.exports = "<h1>Hello, Welcome to Vega!</h1>\r\n\r\n<div class=\"input-group\">\r\n    <span class=\"input-group-addon\" id=\"basic-addon1\">@</span>\r\n    <input type=\"text\" class=\"form-control\" placeholder=\"Make\" aria-describedby=\"basic-addon1\">\r\n</div>\r\n<div class=\"input-group\">\r\n    <span class=\"input-group-addon\" id=\"basic-addon1\">@</span>\r\n    <input type=\"text\" class=\"form-control\" placeholder=\"Model\" aria-describedby=\"basic-addon1\">\r\n</div>\r\nMake:\r\nModel:\r\nIs this vehicle registered?\r\nFeatures:\r\nContact Name:\r\nContact Phone:\r\nContact Email:\r\n";
 
 /***/ }),
 /* 25 */
