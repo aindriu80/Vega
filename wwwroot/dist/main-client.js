@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "0c629dc1f2d4da4e2e84"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8e65a54b2c06548d6184"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -2108,21 +2108,21 @@ module.exports = "<h1>Weather forecast</h1>\r\n\r\n<p>This component demonstrate
 
 /***/ }),
 /* 26 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<h1>Hello, Welcome to Vega!</h1>\r\n\r\n<div class=\"input-group\">\r\n    <span class=\"input-group-addon\" id=\"basic-addon1\">@</span>\r\n    <input type=\"text\" class=\"form-control\" placeholder=\"Make\" aria-describedby=\"basic-addon1\">\r\n</div>\r\n<div class=\"input-group\">\r\n    <span class=\"input-group-addon\" id=\"basic-addon1\">@</span>\r\n    <input type=\"text\" class=\"form-control\" placeholder=\"Model\" aria-describedby=\"basic-addon1\">\r\n</div>\r\nMake:\r\nModel:\r\nIs this vehicle registered?\r\nFeatures:\r\nContact Name:\r\nContact Phone:\r\nContact Email:\r\n";
+module.exports = "<h1>Hello, Welcome to Vega!</h1>\r\n<img src=\"" + __webpack_require__(44) + "\"/>";
 
 /***/ }),
 /* 27 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class='main-nav'>\r\n    <div class='navbar navbar-inverse'>\r\n        <div class='navbar-header'>\r\n            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>\r\n                <span class='sr-only'>Toggle navigation</span>\r\n                <span class='icon-bar'></span>\r\n                <span class='icon-bar'></span>\r\n                <span class='icon-bar'></span>\r\n            </button>\r\n            <a class='navbar-brand' [routerLink]=\"['/home']\">Vega</a>\r\n        </div>\r\n        <div class='clearfix'></div>\r\n        <div class='navbar-collapse collapse'>\r\n            <ul class='nav navbar-nav'>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/home']\">\r\n                        <span class='glyphicon glyphicon-home'></span> Home\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/vehicles/new']\">\r\n                        <span class='glyphicon glyphicon-plus'></span> New Vehicle\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/counter']\">\r\n                        <i class=\"fa fa-calculator\" aria-hidden=\"true\"></i> Counter\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/fetch-data']\">\r\n                        <span class='glyphicon glyphicon-th-list'></span> Fetch data\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
+module.exports = "<div class='main-nav'>\r\n    <div class='navbar navbar-inverse'>\r\n        <div class='navbar-header'>\r\n            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>\r\n                <span class='sr-only'>Toggle navigation</span>\r\n                <span class='icon-bar'></span>\r\n                <span class='icon-bar'></span>\r\n                <span class='icon-bar'></span>\r\n            </button>\r\n            <a class='navbar-brand' [routerLink]=\"['/home']\">Vega</a>\r\n        </div>\r\n        <div class='clearfix'></div>\r\n        <div class='navbar-collapse collapse'>\r\n            <ul class='nav navbar-nav'>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/home']\">\r\n                        <span class='glyphicon glyphicon-home'></span> Home\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/vehicles/new']\">\r\n                        <span class='glyphicon glyphicon-plus'></span> New Vehicle\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/counter']\">\r\n                        <span class=\"fa fa-calculator\" aria-hidden=\"true\"></span> Counter\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/fetch-data']\">\r\n                        <span class='glyphicon glyphicon-th-list'></span> Fetch data\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
 
 /***/ }),
 /* 28 */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  vehicle-form works!\n</p>\n";
+module.exports = "<form>\r\n    <h1>New Vehicle</h1>\r\n    <div class=\"form-group\">\r\n        <label for=\"make\">Make</label>\r\n        <select name=\"make\" class=\"form-control\"id=\"\"></select>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label form=\"model\">Model</label>\r\n        <select id=\"model\" class=\"form-control\"></select>\r\n    </div>\r\n</form>\r\n";
 
 /***/ }),
 /* 29 */
@@ -2634,6 +2634,12 @@ __webpack_require__(7);
 __webpack_require__(6);
 module.exports = __webpack_require__(5);
 
+
+/***/ }),
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "02268ab1ad3b9ade5a25df34dc84420e.jpg";
 
 /***/ })
 /******/ ]);
