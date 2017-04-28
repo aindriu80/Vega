@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "03e761867550c6a0e512"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "2886117fbe88503d3ece"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -9830,7 +9830,7 @@ module.exports = "<div class='main-nav'>\r\n    <div class='navbar navbar-invers
 /* 70 */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>New Vehicle</h1>\r\n<form>\r\n    <div class=\"form-group\">\r\n        <label for=\"make\">Make</label>\r\n        <select name=\"make\" class=\"form-control\" (change)=\"onMakeChange()\"[(ngModel)]=\"vehicle.make\" name=\"make\">\r\n            <option value=\"\"></option>\r\n            <option *ngFor=\"let m of makes\" value=\"{{ m.id }}\">{{ m.name}}</option>\r\n        </select>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label form=\"model\">Model</label>\r\n        <select id=\"model\" class=\"form-control\">\r\n        <option value=\"\"></option>\r\n        <option *ngFor=\"let m of models\" value=\"{{ m.id }}\">{{ m.name }}</option>\r\n        </select>\r\n    </div>\r\n    <h2>Features</h2>\r\n    <div *ngFor=\"let f of features\" class=\"checkbox\">\r\n        <label for=\"feature{{ f.id }}\">\r\n            <input type=\"checkbox\" id=\"feature{{ f.id }}\"> {{ f.name }} \r\n        </label>\r\n    </div>\r\n</form>\r\n";
+module.exports = "<h1>New Vehicle</h1>\r\n<form>\r\n    <div class=\"form-group\">\r\n        <label for=\"make\">Make</label>\r\n        <select name=\"make\" class=\"form-control\" (change)=\"onMakeChange()\"[(ngModel)]=\"vehicle.make\" name=\"make\">\r\n            <option value=\"\"></option>\r\n            <option *ngFor=\"let m of makes\" value=\"{{ m.id }}\">{{ m.name}}</option>\r\n        </select>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label form=\"model\">Model</label>\r\n        <select id=\"model\" class=\"form-control\">\r\n        <option value=\"\"></option>\r\n        <option *ngFor=\"let m of models\" value=\"{{ m.id }}\">{{ m.name }}</option>\r\n        </select>\r\n    </div>\r\n    <p>Is this vehicle register?</p>\r\n    <label for=\"registered\" class=\"radio-inline\">\r\n            <input type=\"radio\" name=\"isRegistered\"id=\"registered\" value=\"true\">Yes\r\n        </label>\r\n    <label for=\"notRegistered\" class=\"radio-inline\">\r\n            <input type=\"radio\" name=\"isRegistered\" id=\"notregistered\" value=\"false\">No\r\n      </label>\r\n    <h2>Features</h2>\r\n    <div *ngFor=\"let f of features\" class=\"checkbox\">\r\n        <label for=\"feature{{ f.id }}\">\r\n            <input type=\"checkbox\" id=\"feature{{ f.id }}\"> {{ f.name }} \r\n        </label>\r\n    </div>\r\n    <h2>Contact</h2>\r\n    <div class=\"form-group\"><label for=\"contactName\">Name</label><input id=\"contactName\" type=\"text\" class=\"form-control\"></div>\r\n    <div class=\"form-group\"><label for=\"contactPhone\">Phone</label><input id=\"contactPhone\" type=\"text\" class=\"form-control\"></div>\r\n    <div class=\"form-group\"><label for=\"contactEmail\">Email</label><input id=\"contactEmail\"type=\"text\" class=\"form-control\"></div>\r\n    <button class=\"btn btn-primary\">Save</button>\r\n</form>\r\n";
 
 /***/ }),
 /* 71 */
