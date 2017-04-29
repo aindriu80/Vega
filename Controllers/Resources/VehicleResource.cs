@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace Vega.Controllers.Resources
 
         public int ModelId { get; set; }
         public bool IsRegistered { get; set; }
+        [Required]
 
         public ContactResource Contact { get; set; }
         public ICollection<int> Features { get; set; }

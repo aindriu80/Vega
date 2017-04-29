@@ -31,6 +31,19 @@ namespace Vega.Controllers
 
         public async Task<IActionResult> CreateVehicle([FromBody] VehicleResource vehicleResource)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            // Follow code unneeded, unlikely to be sending invalid ids
+
+            //var model = await context.Models.FindAsync(vehicleResource.ModelId);
+            //if (model == null)
+            //{
+            //    ModelState.AddModelError("ModelId", "Invalid ModelId");
+            //    return BadRequest(ModelState);
+            //}
+
+
             var vehicle = Mapper.Map<VehicleResource, Vehicle>(vehicleResource);
             vehicle.LastUpdate = DateTime.Now;
 
