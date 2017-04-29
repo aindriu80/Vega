@@ -17,20 +17,28 @@ namespace Vega.Controllers
     [Route("/api/vehicles")]
     public class VehiclesController : Controller
     {
-        private readonly IMapper _mapper;
+        private readonly IMapper mapper;
+        private readonly VegaDbContext context;
 
-        public VehiclesController(IMapper mapper)
+        public VehiclesController(IMapper mapper, VegaDbContext context)
         {
-            _mapper = mapper;
+            this.mapper = mapper;
+            this.context = context;
         }
         [HttpPost]
         // not using domain classes - implementation details
         // dealing with contracts, 
 
-        public IActionResult CreateVehicle([FromBody] VehicleResource vehicleResource)
+        public async Task<IActionResult> CreateVehicle([FromBody] VehicleResource vehicleResource)
         {
             var vehicle = Mapper.Map<VehicleResource, Vehicle>(vehicleResource);
-            return Ok(vehicle);
+            vehicle.LastUpdate = DateTime.Now;
+
+            context.Vehicles.Add(vehicle);
+            await context.SaveChangesAsync();
+
+            var result = mapper.Map<Vehicle, VehicleResource>(vehicle);
+            return Ok(result);
         }
     }
 }
