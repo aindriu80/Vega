@@ -20,6 +20,8 @@ namespace Vega.Models
 
         public DbSet<Feature> Features { get; set; }
 
+        public DbSet<Vehicle> Vehicles { get; set; }
+
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
         //    modelBuilder.Entity<Make>().ToTable("Make");
