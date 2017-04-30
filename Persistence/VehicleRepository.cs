@@ -18,6 +18,7 @@ namespace Vega.Persistence
         {
             if (!includeReleated)
                 return await _context.Vehicles.FindAsync();
+
             return await _context.Vehicles
                 .Include(v => v.Features)
                 .ThenInclude(vf => vf.Feature)
