@@ -16,7 +16,7 @@ namespace Vega.Models
         public DbSet<Feature> Features { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
 
-        public VegaDbContext(DbContextOptions<VegaDbContext> options) 
+        public VegaDbContext(DbContextOptions<VegaDbContext> options)
             : base(options)
         {
 
@@ -27,10 +27,9 @@ namespace Vega.Models
         {
             modelBuilder.Entity<VehicleFeature>()
                 .HasKey(vf =>
-                    new {vf.VehicleId, vf.FeatureId});
+                    new { vf.VehicleId, vf.FeatureId });
         }
 
-         
 
     }
 }

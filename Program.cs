@@ -19,6 +19,8 @@ namespace WebApplicationBasic
                 .Build();
 
             host.Run();
+
+         
         }
     }
 }
