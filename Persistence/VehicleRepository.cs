@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Vega.Models;
+using Vega.Core;
+using Vega.Core.Models;
+
 namespace Vega.Persistence
 {
     public class VehicleRepository : IVehicleRepository

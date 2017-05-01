@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Vega.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Vega.Core.Models;
 
-namespace Vega.Models
+namespace Vega.Persistence
 {
     public class VegaDbContext : DbContext
     {
@@ -17,7 +11,7 @@ namespace Vega.Models
         public DbSet<Vehicle> Vehicles { get; set; }
 
         public VegaDbContext(DbContextOptions<VegaDbContext> options)
-            : base(options)
+            : base((DbContextOptions) options)
         {
 
         }

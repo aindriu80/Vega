@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Vega.Models;
+using Vega.Core;
 using Vega.Persistence;
 
 namespace WebApplicationBasic
