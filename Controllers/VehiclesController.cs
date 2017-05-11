@@ -16,7 +16,7 @@ namespace Vega.Controllers
         private readonly IVehicleRepository _repository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public VehiclesController(IMapper mapper, IVehicleRepository repository, IUnitOfWork unitOfWork)
+        public VehiclesController(IMapper mapper, IVehicleRepository repository, IUnitOfWork unitOfWork)    
         {
             this.mapper = mapper;
             _repository = repository;
@@ -26,6 +26,8 @@ namespace Vega.Controllers
 
         public async Task<IActionResult> CreateVehicle([FromBody] SaveVehicleResource saveVehicleResource)
         {
+            throw new Exception();
+
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
