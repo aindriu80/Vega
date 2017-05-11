@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Vega.Controllers.Resources;
 using Vega.Core.Models;
 using Vega.Persistence;
@@ -22,6 +19,7 @@ namespace Vega.Controllers
             this.context = context;
             this.mapper = mapper;
         }
+
         [HttpGet("/api/features")]
         public async Task<IEnumerable<KeyValuePairResource>> GetFeatures()
         {
@@ -29,6 +27,5 @@ namespace Vega.Controllers
 
             return mapper.Map<List<Feature>, List<KeyValuePairResource>>(features);
         }
-
     }
 }

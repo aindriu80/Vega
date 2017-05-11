@@ -1,18 +1,13 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
 using Vega.Controllers.Resources;
 using Vega.Core;
 using Vega.Core.Models;
-using Vega.Persistence;
 
 namespace Vega.Controllers
 {
-    // place end point at top of class - all methods
-    // respond to api/vehicles
-
 
     [Route("/api/vehicles")]
     public class VehiclesController : Controller
@@ -28,8 +23,7 @@ namespace Vega.Controllers
             _unitOfWork = unitOfWork;
         }
         [HttpPost]
-        // not using domain classes - implementation details
-        // dealing with contracts, 
+
         public async Task<IActionResult> CreateVehicle([FromBody] SaveVehicleResource saveVehicleResource)
         {
             if (!ModelState.IsValid)
