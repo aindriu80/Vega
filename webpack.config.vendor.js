@@ -35,6 +35,7 @@ module.exports = (env) => {
                 'ng2-toasty/bundles/style-bootstrap.css',
                 'font-awesome/css/font-awesome.css',
                 'jquery',
+                'raven-js',
                 'zone.js',
             ]
         },
