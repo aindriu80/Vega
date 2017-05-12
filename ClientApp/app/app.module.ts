@@ -1,5 +1,6 @@
+import { AppErrorHandler } from './appp.error-handler';
 import { FormsModule} from '@angular/forms';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ToastyModule } from 'ng2-toasty';
 import { UniversalModule } from 'angular2-universal';
@@ -37,6 +38,7 @@ import { VehicleService } from "./services/vehicle.service";
         ])
     ],
     providers: [
+        { provide: ErrorHandler, useClass: AppErrorHandler},
         VehicleService
         
     ]
