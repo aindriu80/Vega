@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using Vega.Core;
 using Vega.Core.Models;
 
@@ -16,10 +12,10 @@ namespace Vega.Persistence
         {
             _context = context;
         }
-        public async Task<Vehicle> GetVehicle(int id, bool includeReleated = true)
+        public async Task<Vehicle> GetVehicle(int id, bool includeRelated = true)
         {
-            if (!includeReleated)
-                return await _context.Vehicles.FindAsync();
+            if (!includeRelated)
+                return await _context.Vehicles.FindAsync(id);
 
             return await _context.Vehicles
                 .Include(v => v.Features)
@@ -28,10 +24,7 @@ namespace Vega.Persistence
                 .ThenInclude(m => m.Make)
                 .SingleOrDefaultAsync(v => v.Id == id);
         }
-        //public async Task<Vehicle> GetVehicleWithMake(int id)
-        //{
 
-        //}
         public void Add(Vehicle vehicle)
         {
             _context.Vehicles.Add(vehicle);

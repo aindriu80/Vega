@@ -11,7 +11,7 @@ namespace Vega.Persistence
         public DbSet<Vehicle> Vehicles { get; set; }
 
         public VegaDbContext(DbContextOptions<VegaDbContext> options)
-            : base((DbContextOptions) options)
+            : base(options)
         {
 
         }

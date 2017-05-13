@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using AutoMapper;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
 using Vega.Controllers.Resources;
 using Vega.Core.Models;
-using Vega.Persistence;
 namespace Vega.Mapping
 {
     public class MappingProfile : Profile
     {
         public MappingProfile()
         {
+            // Domain To API Resource
             CreateMap<Make, MakeResource>();
             CreateMap<Make, KeyValuePairResource>();
             CreateMap<Model, KeyValuePairResource>();
@@ -49,12 +45,12 @@ namespace Vega.Mapping
                 .AfterMap((vr, v) =>
                 {
                     // Removed unselected features
-                    var removedFeatures = v.Features.Where(f => !vr.Features.Contains(f.FeatureId));
+                    var removedFeatures = v.Features.Where(f => !vr.Features.Contains(f.FeatureId)).ToList();
                     foreach (var f in removedFeatures)
                         v.Features.Remove(f);
 
                     // Add new features
-                    var addFeatures = vr.Features.Where(id => v.Features.Any(f => f.FeatureId == id)).Select(id => new VehicleFeature { FeatureId = id });
+                    var addFeatures = vr.Features.Where(id => v.Features.Any(f => f.FeatureId == id)).Select(id => new VehicleFeature { FeatureId = id }).ToList();
                     foreach (var f in addFeatures)
                         v.Features.Add(f);
                 });

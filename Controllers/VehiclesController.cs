@@ -16,22 +16,22 @@ namespace Vega.Controllers
         private readonly IVehicleRepository _repository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public VehiclesController(IMapper mapper, IVehicleRepository repository, IUnitOfWork unitOfWork)    
+        public VehiclesController(IMapper mapper, IVehicleRepository repository, IUnitOfWork unitOfWork)
         {
-            this.mapper = mapper;
             _repository = repository;
             _unitOfWork = unitOfWork;
+            this.mapper = mapper;
         }
         [HttpPost]
 
-        public async Task<IActionResult> CreateVehicle([FromBody] SaveVehicleResource saveVehicleResource)
+        public async Task<IActionResult> CreateVehicle([FromBody] SaveVehicleResource vehicleResource)
         {
-            throw new Exception();
+
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var vehicle = Mapper.Map<SaveVehicleResource, Vehicle>(saveVehicleResource);
+            var vehicle = mapper.Map<SaveVehicleResource, Vehicle>(vehicleResource);
             vehicle.LastUpdate = DateTime.Now;
 
             _repository.Add(vehicle);
@@ -39,13 +39,13 @@ namespace Vega.Controllers
 
             vehicle = await _repository.GetVehicle(vehicle.Id);
 
-            var result = mapper.Map<Vehicle, SaveVehicleResource>(vehicle);
+            var result = mapper.Map<Vehicle, VehicleResource>(vehicle);
             return Ok(result);
 
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateVehicle(int id, [FromBody] SaveVehicleResource VehicleResource)
+        public async Task<IActionResult> UpdateVehicle(int id, [FromBody] SaveVehicleResource vehicleResource)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -55,7 +55,7 @@ namespace Vega.Controllers
             if (vehicle == null)
                 return NotFound();
 
-            mapper.Map<SaveVehicleResource, Vehicle>(VehicleResource, vehicle);
+            mapper.Map<SaveVehicleResource, Vehicle>(vehicleResource, vehicle);
             vehicle.LastUpdate = DateTime.Now;
 
             await _unitOfWork.CompleteAsync();
@@ -68,7 +68,7 @@ namespace Vega.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteVehicle(int id)
         {
-            var vehicle = await _repository.GetVehicle(id, includeReleated: false);
+            var vehicle = await _repository.GetVehicle(id, includeRelated: false);
 
             if (vehicle == null)
                 return NotFound();
