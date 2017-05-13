@@ -1,7 +1,10 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { VehicleService } from './../../services/vehicle.service';
 import { Component, OnInit } from '@angular/core';
 import { ToastyService } from "ng2-toasty";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Observable } from "rxjs/Observable";
+import 'rxjs/add/Observable/forkJoin';
+
 
 
 @Component({
@@ -26,28 +29,25 @@ export class VehicleFormComponent implements OnInit {
       private toastyService: ToastyService) { 
 
           route.params.subscribe(p=> {
-              this.vehicle.id = +p['id]'];
+              this.vehicle.id = +p['id'];
           });
-
       }
 
-  ngOnInit() {
-      this.vehicleService.getVehicle(this.vehicle.id)
-      .subscribe(v => {
-          this.vehicle =v;
-      }, err => {
-          if (err.status == 404)
-          this.router.navigate(['/home']);
-      });
+  ngOnInit() {     
 
-
-    this.vehicleService.getMakes().subscribe(makes=>
-    this.makes = makes);    
-
-    this.vehicleService.getFeatures().subscribe(features=>
-    this.features=features);
-    
-  }
+      Observable.forkJoin([           
+            this.vehicleService.getMakes(),
+            this.vehicleService.getFeatures(),
+            this.vehicleService.getVehicle(this.vehicle.id)
+            ]).subscribe(data => {
+                this.makes = data[0];
+                this.features = data[1];
+                this.vehicle = data[2];
+            }, err => {
+                if(err.status ==909)
+                this.router.navigate(['/home']);
+            });
+   }
     onMakeChange() {
         var selectedMake = this.makes.find(m=> m.id == this.vehicle.makeId);
         this.models = selectedMake ? selectedMake.models : [];
@@ -63,9 +63,8 @@ export class VehicleFormComponent implements OnInit {
         }
        
     }
-    submit() {
-        this.vehicleService.create(this.vehicle)
-            .subscribe(
-            x => console.log(x));             
-          }            
+     submit() {
+    this.vehicleService.create(this.vehicle)
+      .subscribe(x => console.log(x));
+  }
 }
