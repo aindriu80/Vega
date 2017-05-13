@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e23ba9f42fb03a87abd4"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "33f1eb21801782c0f268"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -8009,6 +8009,10 @@ var VehicleService = (function () {
         return this.http.post('/api/vehicles', vehicle)
             .map(function (res) { return res.json(); });
     };
+    VehicleService.prototype.getVehicle = function (id) {
+        return this.http.get('/api/vehicles/' + id)
+            .map(function (res) { return res.json(); });
+    };
     return VehicleService;
 }());
 VehicleService = __decorate([
@@ -9302,6 +9306,7 @@ AppModule = __decorate([
                 { path: '', redirectTo: 'home', pathMatch: 'full' },
                 { path: 'home', component: home_component_1.HomeComponent },
                 { path: 'vehicles/new', component: vehicle_form_component_1.VehicleFormComponent },
+                { path: 'vehicles/:id', component: vehicle_form_component_1.VehicleFormComponent },
                 { path: 'counter', component: counter_component_1.CounterComponent },
                 { path: 'fetch-data', component: fetchdata_component_1.FetchDataComponent },
                 { path: '**', redirectTo: 'home' }
@@ -9335,7 +9340,6 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var Raven = __webpack_require__(39);
 var ng2_toasty_1 = __webpack_require__(30);
 var core_1 = __webpack_require__(0);
 var AppErrorHandler = (function () {
@@ -9345,7 +9349,6 @@ var AppErrorHandler = (function () {
     }
     AppErrorHandler.prototype.handleError = function (error) {
         var _this = this;
-        Raven.captureException(error.originalError || error);
         this.ngZone.run(function () {
             _this.toastyService.error({
                 title: 'Error',
@@ -9540,17 +9543,31 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var vehicle_service_1 = __webpack_require__(37);
 var core_1 = __webpack_require__(0);
 var ng2_toasty_1 = __webpack_require__(30);
+var router_1 = __webpack_require__(95);
 var VehicleFormComponent = (function () {
-    function VehicleFormComponent(vehicleService, toastyService) {
+    function VehicleFormComponent(route, router, vehicleService, toastyService) {
+        var _this = this;
+        this.route = route;
+        this.router = router;
         this.vehicleService = vehicleService;
         this.toastyService = toastyService;
         this.vehicle = {
             features: [],
             contact: {}
         };
+        route.params.subscribe(function (p) {
+            _this.vehicle.id = +p['id]'];
+        });
     }
     VehicleFormComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.vehicleService.getVehicle(this.vehicle.id)
+            .subscribe(function (v) {
+            _this.vehicle = v;
+        }, function (err) {
+            if (err.status == 404)
+                _this.router.navigate(['/home']);
+        });
         this.vehicleService.getMakes().subscribe(function (makes) {
             return _this.makes = makes;
         });
@@ -9584,7 +9601,9 @@ VehicleFormComponent = __decorate([
         template: __webpack_require__(75),
         styles: [__webpack_require__(89)]
     }),
-    __metadata("design:paramtypes", [vehicle_service_1.VehicleService,
+    __metadata("design:paramtypes", [router_1.ActivatedRoute,
+        router_1.Router,
+        vehicle_service_1.VehicleService,
         ng2_toasty_1.ToastyService])
 ], VehicleFormComponent);
 exports.VehicleFormComponent = VehicleFormComponent;

@@ -7,8 +7,7 @@ export class AppErrorHandler implements ErrorHandler{
         private ngZone: NgZone,
         @Inject(ToastyService) private toastyService: ToastyService) {
     }
-     handleError(error:any): void {   
-         Raven.captureException(error.originalError || error);
+     handleError(error:any): void {           
                   this.ngZone.run(() =>{
                       this.toastyService.error({
                     title: 'Error',
