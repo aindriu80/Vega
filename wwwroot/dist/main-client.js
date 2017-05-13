@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "33f1eb21801782c0f268"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "eeace9e2f3f896ec6ac4"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -9340,6 +9340,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var Raven = __webpack_require__(39);
 var ng2_toasty_1 = __webpack_require__(30);
 var core_1 = __webpack_require__(0);
 var AppErrorHandler = (function () {
@@ -9349,6 +9350,10 @@ var AppErrorHandler = (function () {
     }
     AppErrorHandler.prototype.handleError = function (error) {
         var _this = this;
+        if (!core_1.isDevMode())
+            Raven.captureException(error.originalError || error);
+        else
+            throw error;
         this.ngZone.run(function () {
             _this.toastyService.error({
                 title: 'Error',
