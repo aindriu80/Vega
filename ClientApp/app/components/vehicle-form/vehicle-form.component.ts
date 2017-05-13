@@ -35,13 +35,20 @@ export class VehicleFormComponent implements OnInit {
 
   ngOnInit() {     
 
-      Observable.forkJoin([           
+      var sources =[           
             this.vehicleService.getMakes(),
             this.vehicleService.getFeatures(),
-            this.vehicleService.getVehicle(this.vehicle.id)
-            ]).subscribe(data => {
+      ];
+      if (this.vehicle.id)
+      sources.push(     
+            this.vehicleService.getVehicle(this.vehicle.id));
+            
+
+                Observable.forkJoin(sources).subscribe(data => {
                 this.makes = data[0];
                 this.features = data[1];
+                
+                if (this.vehicle.id)
                 this.vehicle = data[2];
             }, err => {
                 if(err.status ==909)
