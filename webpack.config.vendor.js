@@ -36,6 +36,7 @@ module.exports = (env) => {
                 'font-awesome/css/font-awesome.css',
                 'jquery',
                 'raven-js',
+                'underscore',
                 'zone.js',
             ]
         },
