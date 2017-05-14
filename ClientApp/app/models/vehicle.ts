@@ -1,6 +1,8 @@
-export interface KeyValuePair{
-    id:number;
-    name:string;
+import { Contact } from './vehicle';
+
+export interface KeyValuePair { 
+  id: number; 
+  name: string; 
 }
 
 export interface Contact{
