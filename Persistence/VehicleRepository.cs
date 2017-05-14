@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Vega.Core;
 using Vega.Core.Models;
@@ -36,7 +38,7 @@ namespace Vega.Persistence
             _context.Remove(vehicle);
         }
 
-        public async Task<IEnumerable<Vehicle>> GetVehicles(Filter filter)
+        public async Task<IEnumerable<Vehicle>> GetVehicles(VehicleQuery vehicleQuery)
         {
             var query = _context.Vehicles
                 .Include(v => v.Model)
@@ -45,10 +47,26 @@ namespace Vega.Persistence
                 .ThenInclude(vf => vf.Feature)
                 .AsQueryable();
 
-            if (filter.MakeId.HasValue)
-                query = query.Where(v => v.Model.MakeId == filter.MakeId.Value);
+            if (vehicleQuery.MakeId.HasValue)
+                query = query.Where(v => v.Model.MakeId == vehicleQuery.MakeId.Value);
 
+            if (vehicleQuery.ModelId.HasValue)
+                query = query.Where(v => v.ModelId == vehicleQuery.ModelId.Value);
 
+            var columnsMap = new Dictionary<string, Expression<Func<Vehicle, object>>>()
+            {
+                ["make"] = v => v.Model.Make.Name,
+                ["model"] = v => v.Model.Name,
+                ["contactName"] = v => v.ContactName,
+                ["id"] = v => v.Id
+            };
+
+            if (vehicleQuery.IsSortAscending)
+                query = query.OrderBy(columnsMap[vehicleQuery.Sortby]);
+            else
+            {
+                query = query.OrderByDescending(columnsMap[vehicleQuery.Sortby]);
+            }
 
             return await query.ToListAsync();
         }
