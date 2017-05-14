@@ -48,6 +48,8 @@ namespace Vega.Persistence
             if (filter.MakeId.HasValue)
                 query = query.Where(v => v.Model.MakeId == filter.MakeId.Value);
 
+
+
             return await query.ToListAsync();
         }
 

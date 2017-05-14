@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "502fead53476e64a941b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d1cddd267042fcf8ff34"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -7153,9 +7153,18 @@ var VehicleService = (function () {
         return this.http.get(this.vehiclesEndpoint + '/' + id)
             .map(function (res) { return res.json(); });
     };
-    VehicleService.prototype.getVehicles = function () {
-        return this.http.get(this.vehiclesEndpoint)
+    VehicleService.prototype.getVehicles = function (filter) {
+        return this.http.get(this.vehiclesEndpoint + '?' + this.toQueryString(filter))
             .map(function (res) { return res.json(); });
+    };
+    VehicleService.prototype.toQueryString = function (obj) {
+        var parts = [];
+        for (var property in obj) {
+            var value = obj[property];
+            if (value != null && value != undefined)
+                parts.push(encodeURIComponent(property) + '=' + encodeURIComponent(value));
+        }
+        return parts.join('&');
     };
     VehicleService.prototype.update = function (vehicle) {
         return this.http.put(this.vehiclesEndpoint + '/' + vehicle.id, vehicle)
@@ -9713,17 +9722,16 @@ var VehicleListComponent = (function () {
         var _this = this;
         this.vehicleService.getMakes()
             .subscribe(function (makes) { return _this.makes = makes; });
-        this.vehicleService.getVehicles()
-            .subscribe(function (vehicles) { return _this.vehicles = _this.allVehicles = vehicles; });
+        this.populateVehicles();
+    };
+    VehicleListComponent.prototype.populateVehicles = function () {
+        var _this = this;
+        this.vehicleService.getVehicles(this.filter)
+            .subscribe(function (vehicles) { return _this.vehicles = vehicles; });
     };
     VehicleListComponent.prototype.onFilterChange = function () {
-        var _this = this;
-        var vehicles = this.allVehicles;
-        if (this.filter.makeId)
-            vehicles = vehicles.filter(function (v) { return v.make.id == _this.filter.makeId; });
-        if (this.filter.modelId)
-            vehicles = vehicles.filter(function (v) { return v.model.id == _this.filter.modelId; });
-        this.vehicles = vehicles;
+        this.filter.modelId = 2;
+        this.populateVehicles();
     };
     VehicleListComponent.prototype.resetFilter = function () {
         this.filter = {};
