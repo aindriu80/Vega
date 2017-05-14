@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a8995e634e49bf6dd9f3"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "cb81c0485c400cca2a40"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -9707,13 +9707,27 @@ var vehicle_service_1 = __webpack_require__(30);
 var VehicleListComponent = (function () {
     function VehicleListComponent(vehicleService) {
         this.vehicleService = vehicleService;
+        this.filter = {};
     }
     VehicleListComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.vehicleService.getMakes()
             .subscribe(function (makes) { return _this.makes = makes; });
         this.vehicleService.getVehicles()
-            .subscribe(function (vehicles) { return _this.vehicles = vehicles; });
+            .subscribe(function (vehicles) { return _this.vehicles = _this.allVehicles = vehicles; });
+    };
+    VehicleListComponent.prototype.onFilterChange = function () {
+        var _this = this;
+        var vehicles = this.allVehicles;
+        if (this.filter.makeId)
+            vehicles = vehicles.filter(function (v) { return v.make.id == _this.filter.makeId; });
+        if (this.filter.modelId)
+            vehicles = vehicles.filter(function (v) { return v.model.id == _this.filter.modelId; });
+        this.vehicles = vehicles;
+    };
+    VehicleListComponent.prototype.resetFilter = function () {
+        this.filter = {};
+        this.onFilterChange();
     };
     return VehicleListComponent;
 }());
@@ -10134,7 +10148,7 @@ module.exports = "<h1>New Vehicle</h1>\r\n<p>\r\n    {{ vehicle | json}}\r\n    
 /* 78 */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Vehicles</h2>\r\n<p>\r\n  <a [routerLink]=\"['/vehicles/new']\" class=\"btn btn-primary\">New Vehicle</a>\r\n</p>\r\n<div class=\"form-group\">\r\n    <label for=\"make\">Make</label>\r\n    <select name=\"\" id=\"make\" class=\"form-control\">\r\n        <option value=\"\"></option>\r\n        <option *ngFor=\"let m of makes\" value=\"{{ m.id }}\">{{m.name }}</option>\r\n    </select>\r\n</div>\r\n<table class=\"table\">\r\n  <thead>\r\n    <tr>\r\n      <th>Id</th>\r\n      <th>Make</th>\r\n      <th>Model</th>\r\n      <th>Contact Name</th>\r\n      <th></th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let v of vehicles\">\r\n      <td>{{ v.id }}</td>\r\n      <td>{{ v.make.name }}</td>\r\n      <td>{{ v.model.name }}</td>\r\n      <td>{{ v.contact.name }}</td>\r\n      <td>\r\n        <a [routerLink]=\"['/vehicles/', v.id]\">View</a>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>";
+module.exports = "<h2>Vehicles</h2>\r\n<p>\r\n  <a [routerLink]=\"['/vehicles/new']\" class=\"btn btn-primary\">New Vehicle</a>\r\n</p>\r\n<div class=\"well\">\r\n<div class=\"form-group\">\r\n    <label for=\"make\">Make</label>\r\n    <select name=\"\" id=\"make\" class=\"form-control\" [(ngModel)]=\"filter.makeId\" (change)=\"onFilterChange()\">\r\n        <option value=\"\"></option>\r\n        <option *ngFor=\"let m of makes\" value=\"{{ m.id }}\">{{ m.name }}</option>\r\n    </select>\r\n</div>\r\n<button class=\"btn btn-default\" (click)=\"resetFilter()\">Reset</button>\r\n</div>\r\n<table class=\"table\">\r\n  <thead>\r\n    <tr>\r\n      <th>Id</th>\r\n      <th>Make</th>\r\n      <th>Model</th>\r\n      <th>Contact Name</th>\r\n      <th></th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let v of vehicles\">\r\n      <td>{{ v.id }}</td>\r\n      <td>{{ v.make.name }}</td>\r\n      <td>{{ v.model.name }}</td>\r\n      <td>{{ v.contact.name }}</td>\r\n      <td>\r\n        <a [routerLink]=\"['/vehicles/', v.id]\">View</a>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>";
 
 /***/ }),
 /* 79 */
