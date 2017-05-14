@@ -1,19 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Vega.Controllers.Resources;
 using Vega.Core.Models;
 using Vega.Persistence;
 
 namespace Vega.Controllers
 {
-    //[Produces("application/json")]
-    //[Route("api/makes")]
+
     public class MakesController : Controller
     {
         private readonly VegaDbContext context;

@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "83128ee61d9648567a38"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a8995e634e49bf6dd9f3"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -704,7 +704,7 @@
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return hotCreateRequire(108)(__webpack_require__.s = 108);
+/******/ 	return hotCreateRequire(110)(__webpack_require__.s = 110);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -749,11 +749,11 @@ var /** @type {?} */ NG_VALUE_ACCESSOR = new __WEBPACK_IMPORTED_MODULE_0__angula
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operator_toPromise__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operator_toPromise__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_operator_toPromise__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__facade_collection__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__facade_collection__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__facade_lang__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__private_import_core__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__private_import_core__ = __webpack_require__(38);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return NG_VALIDATORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NG_ASYNC_VALIDATORS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return Validators; });
@@ -2357,7 +2357,7 @@ function RadioControlValueAccessor_tsickle_Closure_declarations() {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__facade_async__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__facade_collection__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__facade_collection__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__validators__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__control_container__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__reactive_errors__ = __webpack_require__(18);
@@ -3197,7 +3197,7 @@ function DefaultValueAccessor_tsickle_Closure_declarations() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__abstract_form_group_directive__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__control_container__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ng_form__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__template_driven_errors__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__template_driven_errors__ = __webpack_require__(34);
 /* unused harmony export modelGroupProvider */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgModelGroup; });
 /**
@@ -3303,7 +3303,7 @@ function NgModelGroup_tsickle_Closure_declarations() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__error_examples__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__error_examples__ = __webpack_require__(33);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReactiveErrors; });
 /**
  * @license
@@ -4013,11 +4013,11 @@ function NgSelectMultipleOption_tsickle_Closure_declarations() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_observable_fromPromise__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_observable_fromPromise__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_observable_fromPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_observable_fromPromise__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__directives_shared__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__facade_async__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__private_import_core__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__private_import_core__ = __webpack_require__(38);
 /* unused harmony export VALID */
 /* unused harmony export INVALID */
 /* unused harmony export PENDING */
@@ -6094,7 +6094,7 @@ function NgControlStatusGroup_tsickle_Closure_declarations() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ng_form__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ng_model_group__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__shared__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__template_driven_errors__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__template_driven_errors__ = __webpack_require__(34);
 /* unused harmony export formControlBinding */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgModel; });
 /**
@@ -7115,6 +7115,67 @@ function FormControlName_tsickle_Closure_declarations() {
 
 /***/ }),
 /* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(0);
+var http_1 = __webpack_require__(42);
+__webpack_require__(88);
+var VehicleService = (function () {
+    function VehicleService(http) {
+        this.http = http;
+        this.vehiclesEndpoint = 'api/vehicles';
+    }
+    VehicleService.prototype.getFeatures = function () {
+        return this.http.get('/api/features')
+            .map(function (res) { return res.json(); });
+    };
+    VehicleService.prototype.create = function (vehicle) {
+        return this.http.post(this.vehiclesEndpoint, vehicle)
+            .map(function (res) { return res.json(); });
+    };
+    VehicleService.prototype.getMakes = function () {
+        return this.http.get('/api/makes')
+            .map(function (res) { return res.json(); });
+    };
+    VehicleService.prototype.getVehicle = function (id) {
+        return this.http.get(this.vehiclesEndpoint + '/' + id)
+            .map(function (res) { return res.json(); });
+    };
+    VehicleService.prototype.getVehicles = function () {
+        return this.http.get(this.vehiclesEndpoint)
+            .map(function (res) { return res.json(); });
+    };
+    VehicleService.prototype.update = function (vehicle) {
+        return this.http.put(this.vehiclesEndpoint + '/' + vehicle.id, vehicle)
+            .map(function (res) { return res.json(); });
+    };
+    VehicleService.prototype.delete = function (id) {
+        return this.http.delete(this.vehiclesEndpoint + '/' + id)
+            .map(function (res) { return res.json(); });
+    };
+    return VehicleService;
+}());
+VehicleService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], VehicleService);
+exports.VehicleService = VehicleService;
+
+
+/***/ }),
+/* 31 */
 /***/ (function(module, exports) {
 
 /*
@@ -7170,13 +7231,13 @@ module.exports = function() {
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(1))(344)
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7198,11 +7259,11 @@ var /** @type {?} */ FormErrorExamples = {
 //# sourceMappingURL=error_examples.js.map
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__error_examples__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__error_examples__ = __webpack_require__(33);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TemplateDrivenErrors; });
 /**
  * @license
@@ -7244,7 +7305,7 @@ var TemplateDrivenErrors = (function () {
 //# sourceMappingURL=template_driven_errors.js.map
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7637,7 +7698,7 @@ function PatternValidator_tsickle_Closure_declarations() {
 //# sourceMappingURL=validators.js.map
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7820,7 +7881,7 @@ function iterateListLike(obj, fn) {
 //# sourceMappingURL=collection.js.map
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7961,7 +8022,7 @@ function FormBuilder_tsickle_Closure_declarations() {
 //# sourceMappingURL=form_builder.js.map
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7979,62 +8040,6 @@ function FormBuilder_tsickle_Closure_declarations() {
 var /** @type {?} */ isPromise = __WEBPACK_IMPORTED_MODULE_0__angular_core__["__core_private__"].isPromise;
 var /** @type {?} */ isObservable = __WEBPACK_IMPORTED_MODULE_0__angular_core__["__core_private__"].isObservable;
 //# sourceMappingURL=private_import_core.js.map
-
-/***/ }),
-/* 38 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__(0);
-var http_1 = __webpack_require__(42);
-__webpack_require__(86);
-var VehicleService = (function () {
-    function VehicleService(http) {
-        this.http = http;
-    }
-    VehicleService.prototype.getMakes = function () {
-        return this.http.get('/api/makes')
-            .map(function (res) { return res.json(); });
-    };
-    VehicleService.prototype.getFeatures = function () {
-        return this.http.get('/api/features')
-            .map(function (res) { return res.json(); });
-    };
-    VehicleService.prototype.create = function (vehicle) {
-        return this.http.post('/api/vehicles', vehicle)
-            .map(function (res) { return res.json(); });
-    };
-    VehicleService.prototype.getVehicle = function (id) {
-        return this.http.get('/api/vehicles/' + id)
-            .map(function (res) { return res.json(); });
-    };
-    VehicleService.prototype.update = function (vehicle) {
-        return this.http.put('/api/vehicles/' + vehicle.id, vehicle)
-            .map(function (res) { return res.json(); });
-    };
-    VehicleService.prototype.delete = function (id) {
-        return this.http.delete('api/vehicles/' + id)
-            .map(function (res) { return res.json(); });
-    };
-    return VehicleService;
-}());
-VehicleService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [http_1.Http])
-], VehicleService);
-exports.VehicleService = VehicleService;
-
 
 /***/ }),
 /* 39 */
@@ -8245,7 +8250,7 @@ module.exports = Html5Entities;
 
 
 
-var RavenConstructor = __webpack_require__(82);
+var RavenConstructor = __webpack_require__(84);
 
 // This is to be defensive in environments where window does not exist (see https://github.com/getsentry/raven-js/pull/785)
 var _window = typeof window !== 'undefined' ? window
@@ -8332,11 +8337,11 @@ module.exports = (__webpack_require__(1))(59)
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(104);
+__webpack_require__(106);
 var core_1 = __webpack_require__(0);
 var angular2_universal_1 = __webpack_require__(44);
 var app_module_1 = __webpack_require__(57);
-__webpack_require__(105);
+__webpack_require__(107);
 var rootElemTagName = 'app'; // Update this if you change your root component selector
 // Enable either Hot Module Reloading or production mode
 if (true) {
@@ -8380,7 +8385,7 @@ var options = {
   name: ''
 };
 if (true) {
-  var querystring = __webpack_require__(79);
+  var querystring = __webpack_require__(81);
   var overrides = querystring.parse(__resourceQuery.slice(1));
   if (overrides.path) options.path = overrides.path;
   if (overrides.timeout) options.timeout = overrides.timeout;
@@ -8500,11 +8505,11 @@ if (typeof window !== 'undefined') {
 }
 
 function createReporter() {
-  var strip = __webpack_require__(90);
+  var strip = __webpack_require__(92);
 
   var overlay;
   if (typeof document !== 'undefined' && options.overlay) {
-    overlay = __webpack_require__(96);
+    overlay = __webpack_require__(98);
   }
 
   var styles = {
@@ -8557,7 +8562,7 @@ function createReporter() {
   };
 }
 
-var processUpdate = __webpack_require__(97);
+var processUpdate = __webpack_require__(99);
 
 var customHandler;
 var subscribeAllHandler;
@@ -8622,7 +8627,7 @@ if (module) {
   };
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, "?path=%2F__webpack_hmr", __webpack_require__(107)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, "?path=%2F__webpack_hmr", __webpack_require__(109)(module)))
 
 /***/ }),
 /* 48 */
@@ -8710,7 +8715,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__directives_reactive_directives_form_group_name__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__directives_select_control_value_accessor__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__directives_select_multiple_control_value_accessor__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__directives_validators__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__directives_validators__ = __webpack_require__(35);
 /* unused harmony reexport CheckboxControlValueAccessor */
 /* unused harmony reexport DefaultValueAccessor */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__directives_ng_control__ = __webpack_require__(6);
@@ -8871,7 +8876,7 @@ function normalizeAsyncValidator(validator) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__directives__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__directives_radio_control_value_accessor__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__form_builder__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__form_builder__ = __webpack_require__(37);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FormsModule; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ReactiveFormsModule; });
 /**
@@ -8985,13 +8990,13 @@ function ReactiveFormsModule_tsickle_Closure_declarations() {
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return __WEBPACK_IMPORTED_MODULE_16__directives_select_control_value_accessor__["b"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__directives_select_multiple_control_value_accessor__ = __webpack_require__(20);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return __WEBPACK_IMPORTED_MODULE_17__directives_select_multiple_control_value_accessor__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__directives_validators__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__directives_validators__ = __webpack_require__(35);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return __WEBPACK_IMPORTED_MODULE_18__directives_validators__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return __WEBPACK_IMPORTED_MODULE_18__directives_validators__["b"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return __WEBPACK_IMPORTED_MODULE_18__directives_validators__["c"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "y", function() { return __WEBPACK_IMPORTED_MODULE_18__directives_validators__["d"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "z", function() { return __WEBPACK_IMPORTED_MODULE_18__directives_validators__["e"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__form_builder__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__form_builder__ = __webpack_require__(37);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "A", function() { return __WEBPACK_IMPORTED_MODULE_19__form_builder__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__model__ = __webpack_require__(21);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "B", function() { return __WEBPACK_IMPORTED_MODULE_20__model__["a"]; });
@@ -9279,14 +9284,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var vehicle_list_1 = __webpack_require__(65);
 var Raven = __webpack_require__(40);
 var forms_1 = __webpack_require__(49);
 var core_1 = __webpack_require__(0);
 var router_1 = __webpack_require__(43);
-var ng2_toasty_1 = __webpack_require__(31);
+var ng2_toasty_1 = __webpack_require__(32);
 var angular2_universal_1 = __webpack_require__(44);
 var app_component_1 = __webpack_require__(59);
-var vehicle_service_1 = __webpack_require__(38);
+var vehicle_service_1 = __webpack_require__(30);
 var appp_error_handler_1 = __webpack_require__(58);
 var navmenu_component_1 = __webpack_require__(63);
 var home_component_1 = __webpack_require__(62);
@@ -9310,17 +9316,19 @@ AppModule = __decorate([
             counter_component_1.CounterComponent,
             fetchdata_component_1.FetchDataComponent,
             home_component_1.HomeComponent,
-            vehicle_form_component_1.VehicleFormComponent
+            vehicle_form_component_1.VehicleFormComponent,
+            vehicle_list_1.VehicleListComponent
         ],
         imports: [
             forms_1.FormsModule,
             ng2_toasty_1.ToastyModule.forRoot(),
             angular2_universal_1.UniversalModule,
             router_1.RouterModule.forRoot([
-                { path: '', redirectTo: 'home', pathMatch: 'full' },
+                { path: '', redirectTo: 'vehicles', pathMatch: 'full' },
                 { path: 'home', component: home_component_1.HomeComponent },
                 { path: 'vehicles/new', component: vehicle_form_component_1.VehicleFormComponent },
                 { path: 'vehicles/:id', component: vehicle_form_component_1.VehicleFormComponent },
+                { path: 'vehicles', component: vehicle_list_1.VehicleListComponent },
                 { path: 'counter', component: counter_component_1.CounterComponent },
                 { path: 'fetch-data', component: fetchdata_component_1.FetchDataComponent },
                 { path: '**', redirectTo: 'home' }
@@ -9355,7 +9363,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var Raven = __webpack_require__(40);
-var ng2_toasty_1 = __webpack_require__(31);
+var ng2_toasty_1 = __webpack_require__(32);
 var core_1 = __webpack_require__(0);
 var AppErrorHandler = (function () {
     function AppErrorHandler(ngZone, toastyService) {
@@ -9410,8 +9418,8 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'app',
-        template: __webpack_require__(71),
-        styles: [__webpack_require__(91)]
+        template: __webpack_require__(72),
+        styles: [__webpack_require__(93)]
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;
@@ -9443,7 +9451,7 @@ var CounterComponent = (function () {
 CounterComponent = __decorate([
     core_1.Component({
         selector: 'counter',
-        template: __webpack_require__(72)
+        template: __webpack_require__(73)
     })
 ], CounterComponent);
 exports.CounterComponent = CounterComponent;
@@ -9479,7 +9487,7 @@ var FetchDataComponent = (function () {
 FetchDataComponent = __decorate([
     core_1.Component({
         selector: 'fetchdata',
-        template: __webpack_require__(73)
+        template: __webpack_require__(74)
     }),
     __metadata("design:paramtypes", [http_1.Http])
 ], FetchDataComponent);
@@ -9508,7 +9516,7 @@ var HomeComponent = (function () {
 HomeComponent = __decorate([
     core_1.Component({
         selector: 'home',
-        template: __webpack_require__(74)
+        template: __webpack_require__(75)
     })
 ], HomeComponent);
 exports.HomeComponent = HomeComponent;
@@ -9536,8 +9544,8 @@ var NavMenuComponent = (function () {
 NavMenuComponent = __decorate([
     core_1.Component({
         selector: 'nav-menu',
-        template: __webpack_require__(75),
-        styles: [__webpack_require__(92)]
+        template: __webpack_require__(76),
+        styles: [__webpack_require__(94)]
     })
 ], NavMenuComponent);
 exports.NavMenuComponent = NavMenuComponent;
@@ -9559,13 +9567,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var _ = __webpack_require__(94);
-var router_1 = __webpack_require__(43);
-var vehicle_service_1 = __webpack_require__(38);
-var core_1 = __webpack_require__(0);
-var ng2_toasty_1 = __webpack_require__(31);
+var _ = __webpack_require__(96);
 var Observable_1 = __webpack_require__(14);
-__webpack_require__(85);
+var router_1 = __webpack_require__(43);
+var vehicle_service_1 = __webpack_require__(30);
+var core_1 = __webpack_require__(0);
+var ng2_toasty_1 = __webpack_require__(32);
+__webpack_require__(87);
 var VehicleFormComponent = (function () {
     function VehicleFormComponent(route, router, vehicleService, toastyService) {
         var _this = this;
@@ -9641,7 +9649,7 @@ var VehicleFormComponent = (function () {
                 .subscribe(function (x) {
                 _this.toastyService.success({
                     title: 'Success',
-                    msg: 'The vehicle was sucessfully update.',
+                    msg: 'The vehicle was sucessfully updated.',
                     theme: 'bootstrap',
                     showClose: true,
                     timeout: 5000
@@ -9655,7 +9663,7 @@ var VehicleFormComponent = (function () {
     };
     VehicleFormComponent.prototype.delete = function () {
         var _this = this;
-        if (confirm("Are you really sure?")) {
+        if (confirm("Are you sure?")) {
             this.vehicleService.delete(this.vehicle.id)
                 .subscribe(function (x) {
                 _this.router.navigate(['/home']);
@@ -9667,8 +9675,8 @@ var VehicleFormComponent = (function () {
 VehicleFormComponent = __decorate([
     core_1.Component({
         selector: 'app-vehicle-form',
-        template: __webpack_require__(76),
-        styles: [__webpack_require__(93)]
+        template: __webpack_require__(77),
+        styles: [__webpack_require__(95)]
     }),
     __metadata("design:paramtypes", [router_1.ActivatedRoute,
         router_1.Router,
@@ -9682,7 +9690,47 @@ exports.VehicleFormComponent = VehicleFormComponent;
 /* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(30)();
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(0);
+var vehicle_service_1 = __webpack_require__(30);
+var VehicleListComponent = (function () {
+    function VehicleListComponent(vehicleService) {
+        this.vehicleService = vehicleService;
+    }
+    VehicleListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.vehicleService.getMakes()
+            .subscribe(function (makes) { return _this.makes = makes; });
+        this.vehicleService.getVehicles()
+            .subscribe(function (vehicles) { return _this.vehicles = vehicles; });
+    };
+    return VehicleListComponent;
+}());
+VehicleListComponent = __decorate([
+    core_1.Component({
+        template: __webpack_require__(78)
+    }),
+    __metadata("design:paramtypes", [vehicle_service_1.VehicleService])
+], VehicleListComponent);
+exports.VehicleListComponent = VehicleListComponent;
+
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(31)();
 // imports
 
 
@@ -9693,10 +9741,10 @@ exports.push([module.i, "@media (max-width: 767px) {\r\n    /* On small screens,
 
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(30)();
+exports = module.exports = __webpack_require__(31)();
 // imports
 
 
@@ -9707,10 +9755,10 @@ exports.push([module.i, "li .glyphicon {\r\n    margin-right: 10px;\r\n}\r\n\r\n
 
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(30)();
+exports = module.exports = __webpack_require__(31)();
 // imports
 
 
@@ -9721,19 +9769,19 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = {
-  XmlEntities: __webpack_require__(70),
-  Html4Entities: __webpack_require__(69),
+  XmlEntities: __webpack_require__(71),
+  Html4Entities: __webpack_require__(70),
   Html5Entities: __webpack_require__(39),
   AllHtmlEntities: __webpack_require__(39)
 };
 
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports) {
 
 var HTML_ALPHA = ['apos', 'nbsp', 'iexcl', 'cent', 'pound', 'curren', 'yen', 'brvbar', 'sect', 'uml', 'copy', 'ordf', 'laquo', 'not', 'shy', 'reg', 'macr', 'deg', 'plusmn', 'sup2', 'sup3', 'acute', 'micro', 'para', 'middot', 'cedil', 'sup1', 'ordm', 'raquo', 'frac14', 'frac12', 'frac34', 'iquest', 'Agrave', 'Aacute', 'Acirc', 'Atilde', 'Auml', 'Aring', 'Aelig', 'Ccedil', 'Egrave', 'Eacute', 'Ecirc', 'Euml', 'Igrave', 'Iacute', 'Icirc', 'Iuml', 'ETH', 'Ntilde', 'Ograve', 'Oacute', 'Ocirc', 'Otilde', 'Ouml', 'times', 'Oslash', 'Ugrave', 'Uacute', 'Ucirc', 'Uuml', 'Yacute', 'THORN', 'szlig', 'agrave', 'aacute', 'acirc', 'atilde', 'auml', 'aring', 'aelig', 'ccedil', 'egrave', 'eacute', 'ecirc', 'euml', 'igrave', 'iacute', 'icirc', 'iuml', 'eth', 'ntilde', 'ograve', 'oacute', 'ocirc', 'otilde', 'ouml', 'divide', 'Oslash', 'ugrave', 'uacute', 'ucirc', 'uuml', 'yacute', 'thorn', 'yuml', 'quot', 'amp', 'lt', 'gt', 'oelig', 'oelig', 'scaron', 'scaron', 'yuml', 'circ', 'tilde', 'ensp', 'emsp', 'thinsp', 'zwnj', 'zwj', 'lrm', 'rlm', 'ndash', 'mdash', 'lsquo', 'rsquo', 'sbquo', 'ldquo', 'rdquo', 'bdquo', 'dagger', 'dagger', 'permil', 'lsaquo', 'rsaquo', 'euro', 'fnof', 'alpha', 'beta', 'gamma', 'delta', 'epsilon', 'zeta', 'eta', 'theta', 'iota', 'kappa', 'lambda', 'mu', 'nu', 'xi', 'omicron', 'pi', 'rho', 'sigma', 'tau', 'upsilon', 'phi', 'chi', 'psi', 'omega', 'alpha', 'beta', 'gamma', 'delta', 'epsilon', 'zeta', 'eta', 'theta', 'iota', 'kappa', 'lambda', 'mu', 'nu', 'xi', 'omicron', 'pi', 'rho', 'sigmaf', 'sigma', 'tau', 'upsilon', 'phi', 'chi', 'psi', 'omega', 'thetasym', 'upsih', 'piv', 'bull', 'hellip', 'prime', 'prime', 'oline', 'frasl', 'weierp', 'image', 'real', 'trade', 'alefsym', 'larr', 'uarr', 'rarr', 'darr', 'harr', 'crarr', 'larr', 'uarr', 'rarr', 'darr', 'harr', 'forall', 'part', 'exist', 'empty', 'nabla', 'isin', 'notin', 'ni', 'prod', 'sum', 'minus', 'lowast', 'radic', 'prop', 'infin', 'ang', 'and', 'or', 'cap', 'cup', 'int', 'there4', 'sim', 'cong', 'asymp', 'ne', 'equiv', 'le', 'ge', 'sub', 'sup', 'nsub', 'sube', 'supe', 'oplus', 'otimes', 'perp', 'sdot', 'lceil', 'rceil', 'lfloor', 'rfloor', 'lang', 'rang', 'loz', 'spades', 'clubs', 'hearts', 'diams'];
@@ -9886,7 +9934,7 @@ module.exports = Html4Entities;
 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports) {
 
 var ALPHA_INDEX = {
@@ -10047,43 +10095,49 @@ module.exports = XmlEntities;
 
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports) {
 
 module.exports = "<ng2-toasty [position]=\"'top-right'\"></ng2-toasty>\r\n<div class='container-fluid'>\r\n    <div class='row'>\r\n        <div class='col-sm-3'>\r\n            <nav-menu></nav-menu>\r\n        </div>\r\n        <div class='col-sm-9 body-content'>\r\n            <router-outlet></router-outlet>\r\n        </div>\r\n    </div>\r\n</div>";
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports) {
 
 module.exports = "<h1>Counter</h1>\r\n\r\n<p>This is a simple example of an Angular 2 component.</p>\r\n\r\n<p>Current count: <strong>{{ currentCount }}</strong></p>\r\n\r\n<button (click)=\"incrementCounter()\">Increment</button>\r\n";
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports) {
 
 module.exports = "<h1>Weather forecast</h1>\r\n\r\n<p>This component demonstrates fetching data from the server.</p>\r\n\r\n<p *ngIf=\"!forecasts\"><em>Loading...</em></p>\r\n\r\n<table class='table' *ngIf=\"forecasts\">\r\n    <thead>\r\n        <tr>\r\n            <th>Date</th>\r\n            <th>Temp. (C)</th>\r\n            <th>Temp. (F)</th>\r\n            <th>Summary</th>\r\n        </tr>\r\n    </thead>\r\n    <tbody>\r\n        <tr *ngFor=\"let forecast of forecasts\">\r\n            <td>{{ forecast.dateFormatted }}</td>\r\n            <td>{{ forecast.temperatureC }}</td>\r\n            <td>{{ forecast.temperatureF }}</td>\r\n            <td>{{ forecast.summary }}</td>\r\n        </tr>\r\n    </tbody>\r\n</table>\r\n";
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "<h1>Hello, Welcome to Vega!</h1>\r\n<img src=\"" + __webpack_require__(95) + "\"/>";
-
-/***/ }),
-/* 75 */
-/***/ (function(module, exports) {
-
-module.exports = "<div class='main-nav'>\r\n    <div class='navbar navbar-inverse'>\r\n        <div class='navbar-header'>\r\n            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>\r\n                <span class='sr-only'>Toggle navigation</span>\r\n                <span class='icon-bar'></span>\r\n                <span class='icon-bar'></span>\r\n                <span class='icon-bar'></span>\r\n            </button>\r\n            <a class='navbar-brand' [routerLink]=\"['/home']\">Vega</a>\r\n        </div>\r\n        <div class='clearfix'></div>\r\n        <div class='navbar-collapse collapse'>\r\n            <ul class='nav navbar-nav'>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/home']\">\r\n                        <span class='glyphicon glyphicon-home'></span> Home\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/vehicles/new']\">\r\n                        <span class='glyphicon glyphicon-plus'></span> New Vehicle\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/counter']\">\r\n                        <span class=\"fa fa-calculator\" aria-hidden=\"true\"></span> Counter\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/fetch-data']\">\r\n                        <span class='glyphicon glyphicon-th-list'></span> Fetch data\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
+module.exports = "<h1>Hello, Welcome to Vega!</h1>\r\n<img src=\"" + __webpack_require__(97) + "\"/>";
 
 /***/ }),
 /* 76 */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>New Vehicle</h1>\r\n<p>\r\n    {{ vehicle | json}}\r\n    </p>\r\n<form #f=\"ngForm\" (ngSubmit)=\"submit()\" novalidate>\r\n    <div class=\"form-group\">\r\n        <label for=\"make\">Make</label>\r\n        <select id=\"make\" class=\"form-control\" (change)=\"onMakeChange()\"[(ngModel)]=\"vehicle.makeId\" name=\"makeId\" required #make=\"ngModel\">\r\n            <option value=\"\"></option>\r\n            <option *ngFor=\"let m of makes\" value=\"{{ m.id }}\">{{ m.name}}</option>\r\n        </select>\r\n        <div class=\"alert alert-danger\" *ngIf=\"make.touched && !make.valid\">Please specify the make.</div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"model\">Model</label>\r\n        <select id=\"model\" class=\"form-control\" [(ngModel)]=\"vehicle.modelId\" name=\"modelId\" required #model=\"ngModel\">\r\n        <option value=\"\"></option>\r\n        <option *ngFor=\"let m of models\" value=\"{{ m.id }}\">{{ m.name }}</option>\r\n        </select>\r\n        <div class=\"alert alert-danger\" *ngIf=\"model.touched && !model.valid\">Please specify the model.</div>\r\n    </div>\r\n    <p>Is this vehicle register?</p>\r\n    <label for=\"registered\" class=\"radio-inline\">\r\n            <input type=\"radio\" name=\"isRegistered\" id=\"registered\" [value]=\"true\" [(ngModel)]=\"vehicle.isRegistered\">Yes\r\n        </label>\r\n    <label for=\"notRegistered\" class=\"radio-inline\">\r\n            <input type=\"radio\" name=\"isRegistered\" id=\"notregistered\" [value]=\"false\" [(ngModel)]=\"vehicle.isRegistered\">No\r\n      </label>\r\n    <h2>Features</h2>\r\n    <div *ngFor=\"let f of features\" class=\"checkbox\">\r\n        <label for=\"feature{{ f.id }}\">\r\n            <input type=\"checkbox\" id=\"feature{{ f.id }}\" (change)=\"onFeatureToggle(f.id, $event)\" [checked]=\"vehicle.features.includes(f.id)\"> {{ f.name }}\r\n        </label>\r\n    </div>\r\n    <h2>Contact</h2>\r\n    <div class=\"form-group\">\r\n        <label for=\"contactName\">Name</label><input id=\"contactName\" type=\"text\" class=\"form-control\" [(ngModel)]=\"vehicle.contact.name\" name=\"contactName\" required #contactName=\"ngModel\">\r\n        <div class=\"alert alert-danger\" *ngIf=\"contactName.touched && !contactName.valid\">Please enter correct name</div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"contactPhone\">Phone</label><input id=\"contactPhone\" type=\"text\" class=\"form-control\" [(ngModel)]=\"vehicle.contact.phone\" name=\"contactPhone\" required #contactPhone=\"ngModel\">\r\n        <div class=\"alert alert-danger\" *ngIf=\"contactPhone.touched && !contactPhone.valid\">Please enter a valid phone number</div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"contactEmail\">Email</label><input id=\"contactEmail\"type=\"text\" class=\"form-control\" [(ngModel)]=\"vehicle.contact.email\" name=\"contactEmail\">\r\n    </div>\r\n    <button class=\"btn btn-primary\">Save</button>\r\n    <button *ngIf=\"vehicle.id\" class=\"btn btn-danger\" type=\"button\" (click)=\"delete()\">Delete</button>\r\n</form>\r\n";
+module.exports = "<div class='main-nav'>\r\n    <div class='navbar navbar-inverse'>\r\n        <div class='navbar-header'>\r\n            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>\r\n                <span class='sr-only'>Toggle navigation</span>\r\n                <span class='icon-bar'></span>\r\n                <span class='icon-bar'></span>\r\n                <span class='icon-bar'></span>\r\n            </button>\r\n            <a class='navbar-brand' [routerLink]=\"['/home']\">Vega</a>\r\n        </div>\r\n        <div class='clearfix'></div>\r\n        <div class='navbar-collapse collapse'>\r\n            <ul class='nav navbar-nav'>\r\n                <li [routerLinkActive]=\"['link-active']\" [routerLinkActiveOptions]=\"{exact: true}\">\r\n                    <a [routerLink]=\"['/home']\">\r\n                        <span class='glyphicon glyphicon-home'></span> Vehicles\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/vehicles/new']\">\r\n                        <span class='glyphicon glyphicon-plus'></span> New Vehicle\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/counter']\">\r\n                        <span class=\"fa fa-calculator\" aria-hidden=\"true\"></span> Counter\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/fetch-data']\">\r\n                        <span class='glyphicon glyphicon-th-list'></span> Fetch data\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
 
 /***/ }),
 /* 77 */
+/***/ (function(module, exports) {
+
+module.exports = "<h1>New Vehicle</h1>\r\n<p>\r\n    {{ vehicle | json}}\r\n    </p>\r\n<form #f=\"ngForm\" (ngSubmit)=\"submit()\" novalidate>\r\n    <div class=\"form-group\">\r\n        <label for=\"make\">Make</label>\r\n        <select id=\"make\" class=\"form-control\" (change)=\"onMakeChange()\"[(ngModel)]=\"vehicle.makeId\" name=\"makeId\" required #make=\"ngModel\">\r\n            <option value=\"\"></option>\r\n            <option *ngFor=\"let m of makes\" value=\"{{ m.id }}\">{{ m.name}}</option>\r\n        </select>\r\n        <div class=\"alert alert-danger\" *ngIf=\"make.touched && !make.valid\">Please specify the make.</div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"model\">Model</label>\r\n        <select id=\"model\" class=\"form-control\" [(ngModel)]=\"vehicle.modelId\" name=\"modelId\" required #model=\"ngModel\">\r\n        <option value=\"\"></option>\r\n        <option *ngFor=\"let m of models\" value=\"{{ m.id }}\">{{ m.name }}</option>\r\n        </select>\r\n        <div class=\"alert alert-danger\" *ngIf=\"model.touched && !model.valid\">Please specify the model.</div>\r\n    </div>\r\n    <p>Is this vehicle register?</p>\r\n    <label for=\"registered\" class=\"radio-inline\">\r\n            <input type=\"radio\" name=\"isRegistered\" id=\"registered\" [value]=\"true\" [(ngModel)]=\"vehicle.isRegistered\">Yes\r\n        </label>\r\n    <label for=\"notRegistered\" class=\"radio-inline\">\r\n            <input type=\"radio\" name=\"isRegistered\" id=\"notRegistered\" [value]=\"false\" [(ngModel)]=\"vehicle.isRegistered\">No\r\n      </label>\r\n    <h2>Features</h2>\r\n    <div *ngFor=\"let f of features\" class=\"checkbox\">\r\n        <label for=\"feature{{ f.id }}\">\r\n            <input type=\"checkbox\" id=\"feature{{ f.id }}\" (change)=\"onFeatureToggle(f.id, $event)\" [checked]=\"vehicle.features.includes(f.id)\"> {{ f.name }}\r\n        </label>\r\n    </div>\r\n    <h2>Contact</h2>\r\n    <div class=\"form-group\">\r\n        <label for=\"contactName\">Name</label><input id=\"contactName\" type=\"text\" class=\"form-control\" [(ngModel)]=\"vehicle.contact.name\" name=\"contactName\" required #contactName=\"ngModel\">\r\n        <div class=\"alert alert-danger\" *ngIf=\"contactName.touched && !contactName.valid\">Please enter correct name</div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"contactPhone\">Phone</label><input id=\"contactPhone\" type=\"text\" class=\"form-control\" [(ngModel)]=\"vehicle.contact.phone\" name=\"contactPhone\" required #contactPhone=\"ngModel\">\r\n        <div class=\"alert alert-danger\" *ngIf=\"contactPhone.touched && !contactPhone.valid\">Please enter a valid phone number</div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n        <label for=\"contactEmail\">Email</label><input id=\"contactEmail\"type=\"text\" class=\"form-control\" [(ngModel)]=\"vehicle.contact.email\" name=\"contactEmail\">\r\n    </div>\r\n    <button class=\"btn btn-primary\">Save</button>\r\n    <button *ngIf=\"vehicle.id\" class=\"btn btn-danger\" type=\"button\" (click)=\"delete()\">Delete</button>\r\n</form>\r\n";
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports) {
+
+module.exports = "<h2>Vehicles</h2>\r\n<p>\r\n  <a [routerLink]=\"['/vehicles/new']\" class=\"btn btn-primary\">New Vehicle</a>\r\n</p>\r\n<div class=\"form-group\">\r\n    <label for=\"make\">Make</label>\r\n    <select name=\"\" id=\"make\" class=\"form-control\">\r\n        <option value=\"\"></option>\r\n        <option *ngFor=\"let m of makes\" value=\"{{ m.id }}\">{{m.name }}</option>\r\n    </select>\r\n</div>\r\n<table class=\"table\">\r\n  <thead>\r\n    <tr>\r\n      <th>Id</th>\r\n      <th>Make</th>\r\n      <th>Model</th>\r\n      <th>Contact Name</th>\r\n      <th></th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let v of vehicles\">\r\n      <td>{{ v.id }}</td>\r\n      <td>{{ v.make.name }}</td>\r\n      <td>{{ v.model.name }}</td>\r\n      <td>{{ v.contact.name }}</td>\r\n      <td>\r\n        <a [routerLink]=\"['/vehicles/', v.id]\">View</a>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>";
+
+/***/ }),
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10174,7 +10228,7 @@ var isArray = Array.isArray || function (xs) {
 
 
 /***/ }),
-/* 78 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10266,18 +10320,18 @@ var objectKeys = Object.keys || function (obj) {
 
 
 /***/ }),
-/* 79 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-exports.decode = exports.parse = __webpack_require__(77);
-exports.encode = exports.stringify = __webpack_require__(78);
+exports.decode = exports.parse = __webpack_require__(79);
+exports.encode = exports.stringify = __webpack_require__(80);
 
 
 /***/ }),
-/* 80 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10294,7 +10348,7 @@ module.exports = RavenConfigError;
 
 
 /***/ }),
-/* 81 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10338,22 +10392,22 @@ module.exports = {
 
 
 /***/ }),
-/* 82 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {/*global XDomainRequest:false, __DEV__:false*/
 
 
-var TraceKit = __webpack_require__(83);
-var stringify = __webpack_require__(84);
-var RavenConfigError = __webpack_require__(80);
+var TraceKit = __webpack_require__(85);
+var stringify = __webpack_require__(86);
+var RavenConfigError = __webpack_require__(82);
 var utils = __webpack_require__(41);
 
 var isError = utils.isError,
     isObject = utils.isObject;
 
-var wrapConsoleMethod = __webpack_require__(81).wrapMethod;
+var wrapConsoleMethod = __webpack_require__(83).wrapMethod;
 
 var dsnKeys = 'source protocol user pass host port path'.split(' '),
     dsnPattern = /^(?:(\w+):)?\/\/(?:(\w+)(:\w+)?@)?([\w\.-]+)(?::(\d+))?(\/.*)/;
@@ -12394,7 +12448,7 @@ module.exports = Raven;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(22)))
 
 /***/ }),
-/* 83 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13016,7 +13070,7 @@ module.exports = TraceKit;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(22)))
 
 /***/ }),
-/* 84 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13070,29 +13124,29 @@ function serializer(replacer, cycleReplacer) {
 
 
 /***/ }),
-/* 85 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var Observable_1 = __webpack_require__(14);
-var forkJoin_1 = __webpack_require__(88);
+var forkJoin_1 = __webpack_require__(90);
 Observable_1.Observable.forkJoin = forkJoin_1.forkJoin;
 //# sourceMappingURL=forkJoin.js.map
 
 /***/ }),
-/* 86 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var Observable_1 = __webpack_require__(14);
-var map_1 = __webpack_require__(98);
+var map_1 = __webpack_require__(100);
 Observable_1.Observable.prototype.map = map_1.map;
 //# sourceMappingURL=map.js.map
 
 /***/ }),
-/* 87 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13103,10 +13157,10 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Observable_1 = __webpack_require__(14);
-var EmptyObservable_1 = __webpack_require__(101);
-var isArray_1 = __webpack_require__(103);
-var subscribeToResult_1 = __webpack_require__(100);
-var OuterSubscriber_1 = __webpack_require__(99);
+var EmptyObservable_1 = __webpack_require__(103);
+var isArray_1 = __webpack_require__(105);
+var subscribeToResult_1 = __webpack_require__(102);
+var OuterSubscriber_1 = __webpack_require__(101);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @extends {Ignored}
@@ -13210,22 +13264,22 @@ var ForkJoinSubscriber = (function (_super) {
 //# sourceMappingURL=ForkJoinObservable.js.map
 
 /***/ }),
-/* 88 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var ForkJoinObservable_1 = __webpack_require__(87);
+var ForkJoinObservable_1 = __webpack_require__(89);
 exports.forkJoin = ForkJoinObservable_1.ForkJoinObservable.create;
 //# sourceMappingURL=forkJoin.js.map
 
 /***/ }),
-/* 89 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var root_1 = __webpack_require__(106);
+var root_1 = __webpack_require__(108);
 /* tslint:enable:max-line-length */
 /**
  * Converts an Observable sequence to a ES2015 compliant promise.
@@ -13298,7 +13352,7 @@ exports.toPromise = toPromise;
 //# sourceMappingURL=toPromise.js.map
 
 /***/ }),
-/* 90 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13311,21 +13365,7 @@ module.exports = function (str) {
 
 
 /***/ }),
-/* 91 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-        var result = __webpack_require__(65);
-
-        if (typeof result === "string") {
-            module.exports = result;
-        } else {
-            module.exports = result.toString();
-        }
-    
-
-/***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -13339,7 +13379,7 @@ module.exports = function (str) {
     
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -13353,7 +13393,21 @@ module.exports = function (str) {
     
 
 /***/ }),
-/* 94 */
+/* 95 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+        var result = __webpack_require__(68);
+
+        if (typeof result === "string") {
+            module.exports = result;
+        } else {
+            module.exports = result.toString();
+        }
+    
+
+/***/ }),
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscore.js 1.8.3
@@ -14908,13 +14962,13 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscor
 
 
 /***/ }),
-/* 95 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "02268ab1ad3b9ade5a25df34dc84420e.jpg";
 
 /***/ }),
-/* 96 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*eslint-env browser*/
@@ -14958,7 +15012,7 @@ var colors = {
 };
 ansiHTML.setColors(colors);
 
-var Entities = __webpack_require__(68).AllHtmlEntities;
+var Entities = __webpack_require__(69).AllHtmlEntities;
 var entities = new Entities();
 
 exports.showProblems =
@@ -14999,7 +15053,7 @@ function problemType (type) {
 
 
 /***/ }),
-/* 97 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -15137,67 +15191,67 @@ module.exports = function(hash, moduleMap, options) {
 
 
 /***/ }),
-/* 98 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(1))(120)
 
 /***/ }),
-/* 99 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(1))(187)
 
 /***/ }),
-/* 100 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(1))(194)
 
 /***/ }),
-/* 101 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(1))(317)
 
 /***/ }),
-/* 102 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(1))(320)
 
 /***/ }),
-/* 103 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(1))(328)
 
 /***/ }),
-/* 104 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(1))(337)
 
 /***/ }),
-/* 105 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(1))(339)
 
 /***/ }),
-/* 106 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(1))(48)
 
 /***/ }),
-/* 107 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = (__webpack_require__(1))(584)
 
 /***/ }),
-/* 108 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(48);
