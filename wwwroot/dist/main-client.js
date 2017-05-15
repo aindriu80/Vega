@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "d1cddd267042fcf8ff34"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "480cac9eb23afac71f94"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -9716,7 +9716,7 @@ var vehicle_service_1 = __webpack_require__(30);
 var VehicleListComponent = (function () {
     function VehicleListComponent(vehicleService) {
         this.vehicleService = vehicleService;
-        this.filter = {};
+        this.query = {};
     }
     VehicleListComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -9726,16 +9726,26 @@ var VehicleListComponent = (function () {
     };
     VehicleListComponent.prototype.populateVehicles = function () {
         var _this = this;
-        this.vehicleService.getVehicles(this.filter)
+        this.vehicleService.getVehicles(this.query)
             .subscribe(function (vehicles) { return _this.vehicles = vehicles; });
     };
     VehicleListComponent.prototype.onFilterChange = function () {
-        this.filter.modelId = 2;
+        this.query.modelId = 2;
         this.populateVehicles();
     };
     VehicleListComponent.prototype.resetFilter = function () {
-        this.filter = {};
+        this.query = {};
         this.onFilterChange();
+    };
+    VehicleListComponent.prototype.sortBy = function (columnName) {
+        if (this.query.sortBy === columnName) {
+            this.query.isSortAscending = false;
+        }
+        else {
+            this.query.sortBy = columnName;
+            this.query.isSortAscending = true;
+        }
+        this.populateVehicles;
     };
     return VehicleListComponent;
 }());
@@ -10156,7 +10166,7 @@ module.exports = "<h1>New Vehicle</h1>\r\n<p>\r\n    {{ vehicle | json}}\r\n    
 /* 78 */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Vehicles</h2>\r\n<p>\r\n  <a [routerLink]=\"['/vehicles/new']\" class=\"btn btn-primary\">New Vehicle</a>\r\n</p>\r\n<div class=\"well\">\r\n<div class=\"form-group\">\r\n    <label for=\"make\">Make</label>\r\n    <select name=\"\" id=\"make\" class=\"form-control\" [(ngModel)]=\"filter.makeId\" (change)=\"onFilterChange()\">\r\n        <option value=\"\"></option>\r\n        <option *ngFor=\"let m of makes\" value=\"{{ m.id }}\">{{ m.name }}</option>\r\n    </select>\r\n</div>\r\n<button class=\"btn btn-default\" (click)=\"resetFilter()\">Reset</button>\r\n</div>\r\n<table class=\"table\">\r\n  <thead>\r\n    <tr>\r\n      <th>Id</th>\r\n      <th>Make</th>\r\n      <th>Model</th>\r\n      <th>Contact Name</th>\r\n      <th></th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let v of vehicles\">\r\n      <td>{{ v.id }}</td>\r\n      <td>{{ v.make.name }}</td>\r\n      <td>{{ v.model.name }}</td>\r\n      <td>{{ v.contact.name }}</td>\r\n      <td>\r\n        <a [routerLink]=\"['/vehicles/', v.id]\">View</a>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>";
+module.exports = "<h2>Vehicles</h2>\r\n<p>\r\n  <a [routerLink]=\"['/vehicles/new']\" class=\"btn btn-primary\">New Vehicle</a>\r\n</p>\r\n<div class=\"well\">\r\n<div class=\"form-group\">\r\n    <label for=\"make\">Make</label>\r\n    <select name=\"\" id=\"make\" class=\"form-control\" [(ngModel)]=\"query.makeId\" (change)=\"onFilterChange()\">\r\n        <option value=\"\"></option>\r\n        <option *ngFor=\"let m of makes\" value=\"{{ m.id }}\">{{ m.name }}</option>\r\n    </select>\r\n</div>\r\n<button class=\"btn btn-default\" (click)=\"resetFilter()\">Reset</button>\r\n</div>\r\n<table class=\"table\">\r\n  <thead>\r\n    <tr>\r\n      <th>Id</th>\r\n      <th (click)=\"sortBy('make')\">Make</th>\r\n      <th (click)=\"sortBy('model')\">Model</th>\r\n      <th (click)=\"sortBy('contactName')\">Contact Name</th>\r\n      <th></th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let v of vehicles\">\r\n      <td>{{ v.id }}</td>\r\n      <td>{{ v.make.name }}</td>\r\n      <td>{{ v.model.name }}</td>\r\n      <td>{{ v.contact.name }}</td>\r\n      <td>\r\n        <a [routerLink]=\"['/vehicles/', v.id]\">View</a>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>";
 
 /***/ }),
 /* 79 */
