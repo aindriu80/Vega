@@ -65,6 +65,8 @@ namespace Vega.Persistence
 
             query = query.ApplyOrdering(vehicleQuery, columnsMap);
 
+            query = query.ApplyPaging(vehicleQuery);
+
             return await query.ToListAsync();
         }
 

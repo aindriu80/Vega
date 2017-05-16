@@ -9,5 +9,8 @@ namespace Vega.Core.Models
         public string Sortby { get; set; }
         public bool IsSortAscending { get; set; }
 
+        public int Page { get; set; }
+        public byte PageSize { get; set; }
+
     }
 }
