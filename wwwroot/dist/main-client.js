@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b098f045a94851615fa4"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "cc1eadd508cc970007c5"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -9789,9 +9789,10 @@ var vehicle_service_1 = __webpack_require__(30);
 var VehicleListComponent = (function () {
     function VehicleListComponent(vehicleService) {
         this.vehicleService = vehicleService;
+        this.PAGE_SIZE = 3;
         this.queryResult = {};
         this.query = {
-            pageSize: 3
+            pageSize: this.PAGE_SIZE
         };
         this.columns = [
             { title: 'Id' },
@@ -9813,12 +9814,15 @@ var VehicleListComponent = (function () {
             .subscribe(function (result) { return _this.queryResult = result; });
     };
     VehicleListComponent.prototype.onFilterChange = function () {
-        this.query.modelId = 2;
+        this.query.page = 1;
         this.populateVehicles();
     };
     VehicleListComponent.prototype.resetFilter = function () {
-        this.query = {};
-        this.onFilterChange();
+        this.query = {
+            page: 1,
+            pageSize: this.PAGE_SIZE
+        };
+        this.populateVehicles();
     };
     VehicleListComponent.prototype.sortBy = function (columnName) {
         if (this.query.sortBy === columnName) {
