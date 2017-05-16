@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { VehicleService } from './../../services/vehicle.service';
 import { Vehicle, KeyValuePair } from './../../models/vehicle';
 
+
 @Component({
     templateUrl: 'vehicle-list.html'
 })
@@ -10,7 +11,9 @@ import { Vehicle, KeyValuePair } from './../../models/vehicle';
 export class VehicleListComponent implements OnInit {
     vehicles: Vehicle[];
     makes: KeyValuePair[];
-    query: any = {};
+    query: any = {
+        pageSize:3
+    };
     columns=[
         { title: 'Id' },
         { title: 'Contact Name', key: 'contactName', isSortable: true },
@@ -50,5 +53,9 @@ export class VehicleListComponent implements OnInit {
             this.query.isSortAscending = true;        
         }
         this.populateVehicles;
+    }
+    onPageChange(page){
+        this.query.page = page;
+        this.populateVehicles();
     }
 }

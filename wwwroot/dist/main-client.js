@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "67ee4c5fe34c4837ad9f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "fa7df03500ff1fd9acd2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -9293,6 +9293,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var pagination_component_1 = __webpack_require__(111);
 var vehicle_list_1 = __webpack_require__(65);
 var Raven = __webpack_require__(40);
 var forms_1 = __webpack_require__(49);
@@ -9326,7 +9327,8 @@ AppModule = __decorate([
             fetchdata_component_1.FetchDataComponent,
             home_component_1.HomeComponent,
             vehicle_form_component_1.VehicleFormComponent,
-            vehicle_list_1.VehicleListComponent
+            vehicle_list_1.VehicleListComponent,
+            pagination_component_1.PaginationComponent
         ],
         imports: [
             forms_1.FormsModule,
@@ -9716,7 +9718,9 @@ var vehicle_service_1 = __webpack_require__(30);
 var VehicleListComponent = (function () {
     function VehicleListComponent(vehicleService) {
         this.vehicleService = vehicleService;
-        this.query = {};
+        this.query = {
+            pageSize: 3
+        };
         this.columns = [
             { title: 'Id' },
             { title: 'Contact Name', key: 'contactName', isSortable: true },
@@ -9753,6 +9757,10 @@ var VehicleListComponent = (function () {
             this.query.isSortAscending = true;
         }
         this.populateVehicles;
+    };
+    VehicleListComponent.prototype.onPageChange = function (page) {
+        this.query.page = page;
+        this.populateVehicles();
     };
     return VehicleListComponent;
 }());
@@ -10173,7 +10181,7 @@ module.exports = "<h1>New Vehicle</h1>\r\n<p>\r\n    {{ vehicle | json}}\r\n    
 /* 78 */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Vehicles</h2>\r\n<p>\r\n  <a [routerLink]=\"['/vehicles/new']\" class=\"btn btn-primary\">New Vehicle</a>\r\n</p>\r\n<div class=\"well\">\r\n<div class=\"form-group\">\r\n    <label for=\"make\">Make</label>\r\n    <select name=\"\" id=\"make\" class=\"form-control\" [(ngModel)]=\"query.makeId\" (change)=\"onFilterChange()\">\r\n        <option value=\"\"></option>\r\n        <option *ngFor=\"let m of makes\" value=\"{{ m.id }}\">{{ m.name }}</option>\r\n    </select>\r\n</div>\r\n<button class=\"btn btn-default\" (click)=\"resetFilter()\">Reset</button>\r\n</div>\r\n<table class=\"table\">\r\n  <thead>\r\n    <tr>\r\n      <th *ngFor=\"let c of columns\">\r\n        <div *ngIf=\"c.isSortable\" (click)=\"sortBy(c.key)\">\r\n        {{ c.title }}    \r\n        <i *ngIf=\"query.sortBy === c.key\"        \r\n          class=\"fa\"\r\n          [class.fa-sort-asc]=\"query.isSortAscending\"\r\n          [class.fa-sort-desc]=\"!query.isSortAscending\"\r\n          ></i>\r\n       </div>\r\n       <div *ngIf=\"!c.isSortable\">\r\n         {{ c.title }}\r\n       </div>\r\n        </th>  \r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let v of vehicles\">\r\n      <td>{{ v.id }}</td>\r\n      <td>{{ v.make.name }}</td>\r\n      <td>{{ v.model.name }}</td>\r\n      <td>{{ v.contact.name }}</td>\r\n      <td>\r\n        <a [routerLink]=\"['/vehicles/', v.id]\">View</a>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>";
+module.exports = "<h2>Vehicles</h2>\r\n<p>\r\n  <a [routerLink]=\"['/vehicles/new']\" class=\"btn btn-primary\">New Vehicle</a>\r\n</p>\r\n<div class=\"well\">\r\n<div class=\"form-group\">\r\n    <label for=\"make\">Make</label>\r\n    <select name=\"\" id=\"make\" class=\"form-control\" [(ngModel)]=\"query.makeId\" (change)=\"onFilterChange()\">\r\n        <option value=\"\"></option>\r\n        <option *ngFor=\"let m of makes\" value=\"{{ m.id }}\">{{ m.name }}</option>\r\n    </select>\r\n</div>\r\n<button class=\"btn btn-default\" (click)=\"resetFilter()\">Reset</button>\r\n</div>\r\n<table class=\"table\">\r\n  <thead>\r\n    <tr>\r\n      <th *ngFor=\"let c of columns\">\r\n        <div *ngIf=\"c.isSortable\" (click)=\"sortBy(c.key)\">\r\n        {{ c.title }}    \r\n        <i *ngIf=\"query.sortBy === c.key\"        \r\n          class=\"fa\"\r\n          [class.fa-sort-asc]=\"query.isSortAscending\"\r\n          [class.fa-sort-desc]=\"!query.isSortAscending\"\r\n          ></i>\r\n       </div>\r\n       <div *ngIf=\"!c.isSortable\">\r\n         {{ c.title }}\r\n       </div>\r\n        </th>  \r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let v of vehicles\">\r\n      <td>{{ v.id }}</td>\r\n      <td>{{ v.make.name }}</td>\r\n      <td>{{ v.model.name }}</td>\r\n      <td>{{ v.contact.name }}</td>\r\n      <td>\r\n        <a [routerLink]=\"['/vehicles/', v.id]\">View</a>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n<pagination [total-items]=\"10\" [page-size]=\"query.pageSize\" (page-changed)=\"onPageChange($event)\"></pagination>  \r\n";
 
 /***/ }),
 /* 79 */
@@ -15296,6 +15304,77 @@ module.exports = (__webpack_require__(1))(584)
 __webpack_require__(48);
 __webpack_require__(47);
 module.exports = __webpack_require__(46);
+
+
+/***/ }),
+/* 111 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(0);
+var PaginationComponent = (function () {
+    function PaginationComponent() {
+        this.pageSize = 10;
+        this.pageChanged = new core_1.EventEmitter();
+        this.currentPage = 1;
+    }
+    PaginationComponent.prototype.ngOnChanges = function () {
+        this.currentPage = 1;
+        var pagesCount = Math.ceil(this.totalItems / this.pageSize);
+        this.pages = [];
+        for (var i = 1; i <= pagesCount; i++)
+            this.pages.push(i);
+        console.log(this);
+    };
+    PaginationComponent.prototype.changePage = function (page) {
+        this.currentPage = page;
+        this.pageChanged.emit(page);
+    };
+    PaginationComponent.prototype.previous = function () {
+        if (this.currentPage == 1)
+            return;
+        this.currentPage--;
+        this.pageChanged.emit(this.currentPage);
+    };
+    PaginationComponent.prototype.next = function () {
+        if (this.currentPage == this.pages.length)
+            return;
+        this.currentPage++;
+        console.log("next", this);
+        this.pageChanged.emit(this.currentPage);
+    };
+    return PaginationComponent;
+}());
+__decorate([
+    core_1.Input('total-items'),
+    __metadata("design:type", Object)
+], PaginationComponent.prototype, "totalItems", void 0);
+__decorate([
+    core_1.Input('page-size'),
+    __metadata("design:type", Object)
+], PaginationComponent.prototype, "pageSize", void 0);
+__decorate([
+    core_1.Output('page-changed'),
+    __metadata("design:type", Object)
+], PaginationComponent.prototype, "pageChanged", void 0);
+PaginationComponent = __decorate([
+    core_1.Component({
+        selector: 'pagination',
+        template: "\n    <nav *ngIf=\"totalItems > pageSize\">\n        <ul class=\"pagination\">\n            <li [class.disabled]=\"currentPage == 1\">\n                <a (click)=\"previous()\" aria-label=\"Previous\">\n                <span aria-hidden=\"true\">&laquo;</span>\n                </a>\n            </li>\n            <li [class.active]=\"currentPage == page\" *ngFor=\"let page of pages\" (click)=\"changePage(page)\">\n                <a>{{ page }}</a>\n            </li>\n            <li [class.disabled]=\"currentPage == pages.length\">\n                <a (click)=\"next()\" aria-label=\"Next\">\n                <span aria-hidden=\"true\">&raquo;</span>\n                </a>\n            </li>\n        </ul>\n    </nav>  \n"
+    })
+], PaginationComponent);
+exports.PaginationComponent = PaginationComponent;
 
 
 /***/ })
