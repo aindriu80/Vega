@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "cc1eadd508cc970007c5"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d6ddb78accdfb71d6f4b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -9293,8 +9293,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var view_vehicle_1 = __webpack_require__(112);
 var pagination_component_1 = __webpack_require__(64);
 var vehicle_list_1 = __webpack_require__(66);
+var vehicle_form_component_1 = __webpack_require__(65);
 var Raven = __webpack_require__(40);
 var forms_1 = __webpack_require__(49);
 var core_1 = __webpack_require__(0);
@@ -9308,7 +9310,6 @@ var navmenu_component_1 = __webpack_require__(63);
 var home_component_1 = __webpack_require__(62);
 var fetchdata_component_1 = __webpack_require__(61);
 var counter_component_1 = __webpack_require__(60);
-var vehicle_form_component_1 = __webpack_require__(65);
 Raven
     .config('https://a2bcc6c4ad14410c9dc8fa71540b6986@sentry.io/167727')
     .install();
@@ -9328,7 +9329,8 @@ AppModule = __decorate([
             home_component_1.HomeComponent,
             vehicle_form_component_1.VehicleFormComponent,
             vehicle_list_1.VehicleListComponent,
-            pagination_component_1.PaginationComponent
+            pagination_component_1.PaginationComponent,
+            view_vehicle_1.ViewVehicleComponent
         ],
         imports: [
             forms_1.FormsModule,
@@ -9338,7 +9340,8 @@ AppModule = __decorate([
                 { path: '', redirectTo: 'vehicles', pathMatch: 'full' },
                 { path: 'home', component: home_component_1.HomeComponent },
                 { path: 'vehicles/new', component: vehicle_form_component_1.VehicleFormComponent },
-                { path: 'vehicles/:id', component: vehicle_form_component_1.VehicleFormComponent },
+                { path: 'vehicles/edit/:id', component: vehicle_form_component_1.VehicleFormComponent },
+                { path: 'vehicles/:id', component: view_vehicle_1.ViewVehicleComponent },
                 { path: 'vehicles', component: vehicle_list_1.VehicleListComponent },
                 { path: 'counter', component: counter_component_1.CounterComponent },
                 { path: 'fetch-data', component: fetchdata_component_1.FetchDataComponent },
@@ -9676,7 +9679,7 @@ var VehicleFormComponent = (function () {
             }
         };
         route.params.subscribe(function (p) {
-            _this.vehicle.id = +p['id'];
+            _this.vehicle.id = +p['id'] || 0;
         });
     }
     VehicleFormComponent.prototype.ngOnInit = function () {
@@ -9726,31 +9729,17 @@ var VehicleFormComponent = (function () {
     };
     VehicleFormComponent.prototype.submit = function () {
         var _this = this;
-        if (this.vehicle.id) {
-            this.vehicleService.update(this.vehicle)
-                .subscribe(function (x) {
-                _this.toastyService.success({
-                    title: 'Success',
-                    msg: 'The vehicle was sucessfully updated.',
-                    theme: 'bootstrap',
-                    showClose: true,
-                    timeout: 5000
-                });
+        var result$ = (this.vehicle.id) ? this.vehicleService.update(this.vehicle) : this.vehicleService.create(this.vehicle);
+        result$.subscribe(function (vehicle) {
+            _this.toastyService.success({
+                title: 'Success',
+                msg: 'The vehicle was sucessfully updated.',
+                theme: 'bootstrap',
+                showClose: true,
+                timeout: 5000
             });
-        }
-        else {
-            this.vehicleService.create(this.vehicle)
-                .subscribe(function (x) { return console.log(x); });
-        }
-    };
-    VehicleFormComponent.prototype.delete = function () {
-        var _this = this;
-        if (confirm("Are you sure?")) {
-            this.vehicleService.delete(this.vehicle.id)
-                .subscribe(function (x) {
-                _this.router.navigate(['/home']);
-            });
-        }
+            _this.router.navigate(['/vehicles/', vehicle.id]);
+        });
     };
     return VehicleFormComponent;
 }());
@@ -15381,6 +15370,80 @@ __webpack_require__(48);
 __webpack_require__(47);
 module.exports = __webpack_require__(46);
 
+
+/***/ }),
+/* 112 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var ng2_toasty_1 = __webpack_require__(32);
+var vehicle_service_1 = __webpack_require__(30);
+var core_1 = __webpack_require__(0);
+var router_1 = __webpack_require__(43);
+var ViewVehicleComponent = (function () {
+    function ViewVehicleComponent(route, router, toasty, vehicleService) {
+        var _this = this;
+        this.route = route;
+        this.router = router;
+        this.toasty = toasty;
+        this.vehicleService = vehicleService;
+        route.params.subscribe(function (p) {
+            _this.vehicleId = +p['id'];
+            if (isNaN(_this.vehicleId) || _this.vehicleId <= 0) {
+                router.navigate(['/vehicles']);
+                return;
+            }
+        });
+    }
+    ViewVehicleComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.vehicleService.getVehicle(this.vehicleId)
+            .subscribe(function (v) { return _this.vehicle = v; }, function (err) {
+            if (err.status == 404) {
+                _this.router.navigate(['/vehicles']);
+                return;
+            }
+        });
+    };
+    ViewVehicleComponent.prototype.delete = function () {
+        var _this = this;
+        if (confirm("Are you sure?")) {
+            this.vehicleService.delete(this.vehicle.id)
+                .subscribe(function (x) {
+                _this.router.navigate(['/vehicles']);
+            });
+        }
+    };
+    return ViewVehicleComponent;
+}());
+ViewVehicleComponent = __decorate([
+    core_1.Component({
+        template: __webpack_require__(113)
+    }),
+    __metadata("design:paramtypes", [router_1.ActivatedRoute,
+        router_1.Router,
+        ng2_toasty_1.ToastyService,
+        vehicle_service_1.VehicleService])
+], ViewVehicleComponent);
+exports.ViewVehicleComponent = ViewVehicleComponent;
+
+
+/***/ }),
+/* 113 */
+/***/ (function(module, exports) {
+
+module.exports = "<h1>Vehicle</h1>\r\n <div>\r\n \r\n   <!-- Nav tabs -->\r\n   <ul class=\"nav nav-tabs\" role=\"tablist\">\r\n     <li role=\"presentation\" class=\"active\"><a href=\"#basic\" aria-controls=\"basic\" role=\"tab\" data-toggle=\"tab\">Vehicle</a></li>\r\n     <li role=\"presentation\"><a href=\"#photos\" aria-controls=\"photos\" role=\"tab\" data-toggle=\"tab\">Photos</a></li>\r\n   </ul>\r\n\r\n    <!-- Tab panes -->\r\n  <div class=\"tab-content\" *ngIf=\"vehicle\">\r\n    <!-- Vehicle tab -->\r\n    <div role=\"tabpanel\" class=\"tab-pane active\" id=\"basic\">\r\n      <h2>Basics</h2>\r\n      <ul>\r\n        <li>Make: {{ vehicle.make.name }}</li>\r\n        <li>Model: {{ vehicle.model.name }}</li>\r\n        <li>Registered: {{ vehicle.isRegistered ? 'Yes' : 'No' }}\r\n      </ul>\r\n      <h2>Features</h2>\r\n      <ul>\r\n        <li *ngFor=\"let f of vehicle.features\">{{ f.name }}</li>\r\n      </ul>\r\n      <h2>Contact</h2>\r\n      <ul>\r\n        <li>Contact Name: {{ vehicle.contact.name }}</li>\r\n        <li>Contact Phone: {{ vehicle.contact.phone }}</li>\r\n        <li>Contact Email: {{ vehicle.contact.email }}</li>\r\n      </ul>\r\n      <br/>\r\n      <p>\r\n        <a class=\"btn btn-primary\" [routerLink]=\"['/vehicles/edit/', vehicle.id]\">Edit</a>\r\n        <button class=\"btn btn-danger\" (click)=\"delete()\">Delete</button>\r\n        <a class=\"btn btn-default\" [routerLink]=\"['/vehicles']\">View All Vehicles</a>\r\n      </p>\r\n    </div>\r\n    <!-- Photos tab -->\r\n    <div role=\"tabpanel\" class=\"tab-pane\" id=\"photos\">\r\n      <h2>Photos</h2>\r\n    </div>\r\n  </div>\r\n  \r\n   </div>";
 
 /***/ })
 /******/ ]);
