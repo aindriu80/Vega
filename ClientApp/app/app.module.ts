@@ -19,6 +19,7 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
+import { PhotoService } from "./services/photo.service";
 
 
 
@@ -39,7 +40,8 @@ Raven
         VehicleFormComponent,
         VehicleListComponent,
         PaginationComponent,
-        ViewVehicleComponent
+        ViewVehicleComponent,
+       
 
     ],
     imports: [
@@ -60,7 +62,8 @@ Raven
     ],
     providers: [
         { provide: ErrorHandler, useClass: AppErrorHandler},
-        VehicleService
+        VehicleService,
+        PhotoService
         
     ]
 })
