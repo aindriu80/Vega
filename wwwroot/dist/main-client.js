@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "9ad0041d6b8f9a98ee4b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "c734ddaeb9d4950e21ca"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -8090,6 +8090,10 @@ var PhotoService = (function () {
         return this.http.post("/api/vehicles/" + vehicleId + "/photos", formData)
             .map(function (res) { return res.json(); });
     };
+    PhotoService.prototype.getPhotos = function (vehicleId) {
+        return this.http.get("/api/vehicles/" + vehicleId + "/photos")
+            .map(function (res) { return res.json(); });
+    };
     return PhotoService;
 }());
 PhotoService = __decorate([
@@ -9902,7 +9906,6 @@ var ng2_toasty_1 = __webpack_require__(24);
 var vehicle_service_1 = __webpack_require__(22);
 var core_1 = __webpack_require__(0);
 var router_1 = __webpack_require__(34);
-var core_2 = __webpack_require__(0);
 var photo_service_1 = __webpack_require__(41);
 var ViewVehicleComponent = (function () {
     function ViewVehicleComponent(route, router, toasty, photoService, vehicleService) {
@@ -9922,6 +9925,8 @@ var ViewVehicleComponent = (function () {
     }
     ViewVehicleComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.photoService.getPhotos(this.vehicleId)
+            .subscribe(function (photos) { return _this.photos = photos; });
         this.vehicleService.getVehicle(this.vehicleId)
             .subscribe(function (v) { return _this.vehicle = v; }, function (err) {
             if (err.status == 404) {
@@ -9940,14 +9945,17 @@ var ViewVehicleComponent = (function () {
         }
     };
     ViewVehicleComponent.prototype.uploadPhoto = function () {
+        var _this = this;
         var nativeElement = this.fileInput.nativeElement;
         this.photoService.upload(this.vehicleId, nativeElement.files[0])
-            .subscribe(function (x) { return console.log(x); });
+            .subscribe(function (photo) {
+            _this.photos.push(photo);
+        });
     };
     return ViewVehicleComponent;
 }());
 __decorate([
-    core_2.ViewChild('fileInput'),
+    core_1.ViewChild('fileInput'),
     __metadata("design:type", core_1.ElementRef)
 ], ViewVehicleComponent.prototype, "fileInput", void 0);
 ViewVehicleComponent = __decorate([
@@ -10359,7 +10367,7 @@ module.exports = "<h1>Hello, Welcome to Vega!</h1>\r\n<img src=\"" + __webpack_r
 /* 79 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class='main-nav'>\r\n    <div class='navbar navbar-inverse'>\r\n        <div class='navbar-header'>\r\n            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>\r\n                <span class='sr-only'>Toggle navigation</span>\r\n                <span class='icon-bar'></span>\r\n                <span class='icon-bar'></span>\r\n                <span class='icon-bar'></span>\r\n            </button>\r\n            <a class='navbar-brand' [routerLink]=\"['/home']\">Vega</a>\r\n        </div>\r\n        <div class='clearfix'></div>\r\n        <div class='navbar-collapse collapse'>\r\n            <ul class='nav navbar-nav'>\r\n                <li [routerLinkActive]=\"['link-active']\" [routerLinkActiveOptions]=\"{exact: true}\">\r\n                    <a [routerLink]=\"['/home']\">\r\n                        <span class='glyphicon glyphicon-home'></span> Vehicles\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/vehicles/new']\">\r\n                        <span class='glyphicon glyphicon-plus'></span> New Vehicle\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/counter']\">\r\n                        <span class=\"fa fa-calculator\" aria-hidden=\"true\"></span> Counter\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/fetch-data']\">\r\n                        <span class='glyphicon glyphicon-th-list'></span> Fetch data\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
+module.exports = "<div class='main-nav'>\r\n    <div class='navbar navbar-inverse'>\r\n        <div class='navbar-header'>\r\n            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>\r\n                <span class='sr-only'>Toggle navigation</span>\r\n                <span class='icon-bar'></span>\r\n                <span class='icon-bar'></span>\r\n                <span class='icon-bar'></span>\r\n            </button>\r\n            <a class='navbar-brand' [routerLink]=\"['/home']\">Vega</a>\r\n        </div>\r\n        <div class='clearfix'></div>\r\n        <div class='navbar-collapse collapse'>\r\n            <ul class='nav navbar-nav'>\r\n                <li [routerLinkActive]=\"['link-active']\" [routerLinkActiveOptions]=\"{exact: true}\">\r\n                    <a [routerLink]=\"['/vehicles']\">\r\n                        <span class='glyphicon glyphicon-home'></span> Vehicles\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/vehicles/new']\">\r\n                        <span class='glyphicon glyphicon-plus'></span> New Vehicle\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/counter']\">\r\n                        <span class=\"fa fa-calculator\" aria-hidden=\"true\"></span> Counter\r\n                    </a>\r\n                </li>\r\n                <li [routerLinkActive]=\"['link-active']\">\r\n                    <a [routerLink]=\"['/fetch-data']\">\r\n                        <span class='glyphicon glyphicon-th-list'></span> Fetch data\r\n                    </a>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</div>\r\n";
 
 /***/ }),
 /* 80 */
@@ -10371,13 +10379,13 @@ module.exports = "<h1>New Vehicle</h1>\r\n<p>\r\n    {{ vehicle | json}}\r\n    
 /* 81 */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Vehicles</h2>\r\n<p>\r\n  <a [routerLink]=\"['/vehicles/new']\" class=\"btn btn-primary\">New Vehicle</a>\r\n</p>\r\n<div class=\"well\">\r\n<div class=\"form-group\">\r\n    <label for=\"make\">Make</label>\r\n    <select name=\"\" id=\"make\" class=\"form-control\" [(ngModel)]=\"query.makeId\" (change)=\"onFilterChange()\">\r\n        <option value=\"\"></option>\r\n        <option *ngFor=\"let m of makes\" value=\"{{ m.id }}\">{{ m.name }}</option>\r\n    </select>\r\n</div>\r\n<button class=\"btn btn-default\" (click)=\"resetFilter()\">Reset</button>\r\n</div>\r\n<table class=\"table\">\r\n  <thead>\r\n    <tr>\r\n      <th *ngFor=\"let c of columns\">\r\n        <div *ngIf=\"c.isSortable\" (click)=\"sortBy(c.key)\">\r\n        {{ c.title }}    \r\n        <i *ngIf=\"query.sortBy === c.key\"        \r\n          class=\"fa\"\r\n          [class.fa-sort-asc]=\"query.isSortAscending\"\r\n          [class.fa-sort-desc]=\"!query.isSortAscending\"\r\n          ></i>\r\n       </div>\r\n       <div *ngIf=\"!c.isSortable\">\r\n         {{ c.title }}\r\n       </div>\r\n        </th>  \r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let v of queryResult.items\">\r\n      <td>{{ v.id }}</td>\r\n      <td>{{ v.make.name }}</td>\r\n      <td>{{ v.model.name }}</td>\r\n      <td>{{ v.contact.name }}</td>\r\n      <td>\r\n        <a [routerLink]=\"['/vehicles/', v.id]\">View</a>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n<pagination [total-items]=\"queryResult.totalItems\" [page-size]=\"query.pageSize\" (page-changed)=\"onPageChange($event)\"></pagination>  \r\n";
+module.exports = "<h2>Vehicles</h2>\r\n<p>\r\n  <a [routerLink]=\"['/vehicles/new']\" class=\"btn btn-primary\">New Vehicle</a>\r\n</p>\r\n<div class=\"well\">\r\n<div class=\"form-group\">\r\n    <label for=\"make\">Make</label>\r\n    <select id=\"make\" class=\"form-control\" [(ngModel)]=\"query.makeId\" (change)=\"onFilterChange()\">\r\n        <option value=\"\"></option>\r\n        <option *ngFor=\"let m of makes\" value=\"{{ m.id }}\">{{ m.name }}</option>\r\n    </select>\r\n</div>\r\n<button class=\"btn btn-default\" (click)=\"resetFilter()\">Reset</button>\r\n</div>\r\n<table class=\"table\">\r\n  <thead>\r\n    <tr>\r\n      <th *ngFor=\"let c of columns\">\r\n        <div *ngIf=\"c.isSortable\" (click)=\"sortBy(c.key)\">\r\n        {{ c.title }}    \r\n        <i *ngIf=\"query.sortBy === c.key\"        \r\n          class=\"fa\"\r\n          [class.fa-sort-asc]=\"query.isSortAscending\"\r\n          [class.fa-sort-desc]=\"!query.isSortAscending\"\r\n          ></i>\r\n       </div>\r\n       <div *ngIf=\"!c.isSortable\">\r\n         {{ c.title }}\r\n       </div>\r\n        </th>  \r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let v of queryResult.items\">\r\n      <td>{{ v.id }}</td>\r\n      <td>{{ v.make.name }}</td>\r\n      <td>{{ v.model.name }}</td>\r\n      <td>{{ v.contact.name }}</td>\r\n      <td>\r\n        <a [routerLink]=\"['/vehicles/', v.id]\">View</a>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n<pagination [total-items]=\"queryResult.totalItems\" [page-size]=\"query.pageSize\" (page-changed)=\"onPageChange($event)\"></pagination>  \r\n";
 
 /***/ }),
 /* 82 */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Vehicle</h1>\r\n <div>\r\n \r\n   <!-- Nav tabs -->\r\n   <ul class=\"nav nav-tabs\" role=\"tablist\">\r\n     <li role=\"presentation\" class=\"active\"><a href=\"#basic\" aria-controls=\"basic\" role=\"tab\" data-toggle=\"tab\">Vehicle</a></li>\r\n     <li role=\"presentation\"><a href=\"#photos\" aria-controls=\"photos\" role=\"tab\" data-toggle=\"tab\">Photos</a></li>\r\n   </ul>\r\n\r\n    <!-- Tab panes -->\r\n  <div class=\"tab-content\" *ngIf=\"vehicle\">\r\n    <!-- Vehicle tab -->\r\n    <div role=\"tabpanel\" class=\"tab-pane active\" id=\"basic\">\r\n      <h2>Basics</h2>\r\n      <ul>\r\n        <li>Make: {{ vehicle.make.name }}</li>\r\n        <li>Model: {{ vehicle.model.name }}</li>\r\n        <li>Registered: {{ vehicle.isRegistered ? 'Yes' : 'No' }}\r\n      </ul>\r\n      <h2>Features</h2>\r\n      <ul>\r\n        <li *ngFor=\"let f of vehicle.features\">{{ f.name }}</li>\r\n      </ul>\r\n      <h2>Contact</h2>\r\n      <ul>\r\n        <li>Contact Name: {{ vehicle.contact.name }}</li>\r\n        <li>Contact Phone: {{ vehicle.contact.phone }}</li>\r\n        <li>Contact Email: {{ vehicle.contact.email }}</li>\r\n      </ul>\r\n      <br/>\r\n      <p>\r\n        <a class=\"btn btn-primary\" [routerLink]=\"['/vehicles/edit/', vehicle.id]\">Edit</a>\r\n        <button class=\"btn btn-danger\" (click)=\"delete()\">Delete</button>\r\n        <a class=\"btn btn-default\" [routerLink]=\"['/vehicles']\">View All Vehicles</a>\r\n      </p>\r\n    </div>\r\n    <!-- Photos tab -->\r\n    <div role=\"tabpanel\" class=\"tab-pane\" id=\"photos\">\r\n      <h2>Photos</h2>\r\n      <input type=\"file\" (change)=\"uploadPhoto()\" #fileInput>\r\n    </div>\r\n  </div>  \r\n</div>";
+module.exports = "<h1>Vehicle</h1>\r\n <div>\r\n \r\n   <!-- Nav tabs -->\r\n   <ul class=\"nav nav-tabs\" role=\"tablist\">\r\n     <li role=\"presentation\" class=\"active\"><a href=\"#basic\" aria-controls=\"basic\" role=\"tab\" data-toggle=\"tab\">Vehicle</a></li>\r\n     <li role=\"presentation\"><a href=\"#photos\" aria-controls=\"photos\" role=\"tab\" data-toggle=\"tab\">Photos</a></li>\r\n   </ul>\r\n\r\n    <!-- Tab panes -->\r\n  <div class=\"tab-content\" *ngIf=\"vehicle\">\r\n    <!-- Vehicle tab -->\r\n    <div role=\"tabpanel\" class=\"tab-pane active\" id=\"basic\">\r\n      <h2>Basics</h2>\r\n      <ul>\r\n        <li>Make: {{ vehicle.make.name }}</li>\r\n        <li>Model: {{ vehicle.model.name }}</li>\r\n        <li>Registered: {{ vehicle.isRegistered ? 'Yes' : 'No' }}\r\n      </ul>\r\n      <h2>Features</h2>\r\n      <ul>\r\n        <li *ngFor=\"let f of vehicle.features\">{{ f.name }}</li>\r\n      </ul>\r\n      <h2>Contact</h2>\r\n      <ul>\r\n        <li>Contact Name: {{ vehicle.contact.name }}</li>\r\n        <li>Contact Phone: {{ vehicle.contact.phone }}</li>\r\n        <li>Contact Email: {{ vehicle.contact.email }}</li>\r\n      </ul>\r\n      <br/>\r\n      <p>\r\n        <a class=\"btn btn-primary\" [routerLink]=\"['/vehicles/edit/', vehicle.id]\">Edit</a>\r\n        <button class=\"btn btn-danger\" (click)=\"delete()\">Delete</button>\r\n        <a class=\"btn btn-default\" [routerLink]=\"['/vehicles']\">View All Vehicles</a>\r\n      </p>\r\n    </div>\r\n    <!-- Photos tab -->\r\n    <div role=\"tabpanel\" class=\"tab-pane\" id=\"photos\">\r\n      <h2>Photos</h2>\r\n      <input type=\"file\" (change)=\"uploadPhoto()\" #fileInput>\r\n      <img *ngFor=\"let photo of photos\" src=\"/uploads/{{ photo.fileName }}\"  class=\"img-thumbnail\">      \r\n    </div>\r\n  </div>  \r\n</div>";
 
 /***/ }),
 /* 83 */

@@ -36,14 +36,13 @@ Raven
         NavMenuComponent,
         CounterComponent,
         FetchDataComponent,
-        HomeComponent,
-        VehicleFormComponent,
-        VehicleListComponent,
+        HomeComponent,        
+        VehicleFormComponent,        
+        VehicleListComponent,                
         PaginationComponent,
         ViewVehicleComponent,
-       
-
     ],
+    
     imports: [
         FormsModule,
         ToastyModule.forRoot(),
