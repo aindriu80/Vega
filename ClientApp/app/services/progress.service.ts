@@ -15,7 +15,7 @@ export class ProgressService {
     }
     endTracking(){
         this.uploadProgress.complete();
-    }  
+}  
     downloadProgress: Subject<any> = new Subject();
 }
 

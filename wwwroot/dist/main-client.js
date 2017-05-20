@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3b544f3784d9dfb9beb9"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "fb580b4305e35d16c443"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -9518,10 +9518,6 @@ var AppErrorHandler = (function () {
     }
     AppErrorHandler.prototype.handleError = function (error) {
         var _this = this;
-        if (!core_1.isDevMode())
-            Raven.captureException(error.originalError || error);
-        else
-            throw error;
         this.ngZone.run(function () {
             _this.toastyService.error({
                 title: 'Error',
@@ -9531,6 +9527,10 @@ var AppErrorHandler = (function () {
                 timeout: 5000
             });
         });
+        if (!core_1.isDevMode())
+            Raven.captureException(error.originalError || error);
+        else
+            throw error;
     };
     return AppErrorHandler;
 }());
@@ -10038,17 +10038,26 @@ var ViewVehicleComponent = (function () {
     };
     ViewVehicleComponent.prototype.uploadPhoto = function () {
         var _this = this;
-        var nativeElement = this.fileInput.nativeElement;
         this.progressService.startTracking()
             .subscribe(function (progress) {
             console.log(progress);
             _this.zone.run(function () {
-                _this.progress = progress;
             });
         }, null, function () { _this.progress = null; });
-        this.photoService.upload(this.vehicleId, nativeElement.files[0])
+        var nativeElement = this.fileInput.nativeElement;
+        var file = nativeElement.files[0];
+        nativeElement.value = '';
+        this.photoService.upload(this.vehicleId, file)
             .subscribe(function (photo) {
             _this.photos.push(photo);
+        }, function (err) {
+            _this.toasty.error({
+                title: 'Error',
+                msg: err.text(),
+                theme: 'bootstrap',
+                showClose: true,
+                timeout: 5000
+            });
         });
     };
     return ViewVehicleComponent;
