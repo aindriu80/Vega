@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "c734ddaeb9d4950e21ca"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "d0c73e1bd8d3e4fd1376"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -9334,6 +9334,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var progress_service_1 = __webpack_require__(115);
+var http_1 = __webpack_require__(33);
 var view_vehicle_1 = __webpack_require__(68);
 var pagination_component_1 = __webpack_require__(65);
 var vehicle_list_1 = __webpack_require__(67);
@@ -9392,8 +9394,10 @@ AppModule = __decorate([
         ],
         providers: [
             { provide: core_1.ErrorHandler, useClass: appp_error_handler_1.AppErrorHandler },
+            { provide: http_1.BrowserXhr, useClass: progress_service_1.BrowserXhrWithProgress },
             vehicle_service_1.VehicleService,
-            photo_service_1.PhotoService
+            photo_service_1.PhotoService,
+            progress_service_1.ProgressService
         ]
     })
 ], AppModule);
@@ -9902,17 +9906,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var progress_service_1 = __webpack_require__(115);
 var ng2_toasty_1 = __webpack_require__(24);
 var vehicle_service_1 = __webpack_require__(22);
 var core_1 = __webpack_require__(0);
 var router_1 = __webpack_require__(34);
 var photo_service_1 = __webpack_require__(41);
 var ViewVehicleComponent = (function () {
-    function ViewVehicleComponent(route, router, toasty, photoService, vehicleService) {
+    function ViewVehicleComponent(route, router, toasty, progressService, photoService, vehicleService) {
         var _this = this;
         this.route = route;
         this.router = router;
         this.toasty = toasty;
+        this.progressService = progressService;
         this.photoService = photoService;
         this.vehicleService = vehicleService;
         route.params.subscribe(function (p) {
@@ -9947,6 +9953,8 @@ var ViewVehicleComponent = (function () {
     ViewVehicleComponent.prototype.uploadPhoto = function () {
         var _this = this;
         var nativeElement = this.fileInput.nativeElement;
+        this.progressService.uploadProgress
+            .subscribe(function (progress) { return console.log(progress); });
         this.photoService.upload(this.vehicleId, nativeElement.files[0])
             .subscribe(function (photo) {
             _this.photos.push(photo);
@@ -9965,6 +9973,7 @@ ViewVehicleComponent = __decorate([
     __metadata("design:paramtypes", [router_1.ActivatedRoute,
         router_1.Router,
         ng2_toasty_1.ToastyService,
+        progress_service_1.ProgressService,
         photo_service_1.PhotoService,
         vehicle_service_1.VehicleService])
 ], ViewVehicleComponent);
@@ -10385,7 +10394,7 @@ module.exports = "<h2>Vehicles</h2>\r\n<p>\r\n  <a [routerLink]=\"['/vehicles/ne
 /* 82 */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Vehicle</h1>\r\n <div>\r\n \r\n   <!-- Nav tabs -->\r\n   <ul class=\"nav nav-tabs\" role=\"tablist\">\r\n     <li role=\"presentation\" class=\"active\"><a href=\"#basic\" aria-controls=\"basic\" role=\"tab\" data-toggle=\"tab\">Vehicle</a></li>\r\n     <li role=\"presentation\"><a href=\"#photos\" aria-controls=\"photos\" role=\"tab\" data-toggle=\"tab\">Photos</a></li>\r\n   </ul>\r\n\r\n    <!-- Tab panes -->\r\n  <div class=\"tab-content\" *ngIf=\"vehicle\">\r\n    <!-- Vehicle tab -->\r\n    <div role=\"tabpanel\" class=\"tab-pane active\" id=\"basic\">\r\n      <h2>Basics</h2>\r\n      <ul>\r\n        <li>Make: {{ vehicle.make.name }}</li>\r\n        <li>Model: {{ vehicle.model.name }}</li>\r\n        <li>Registered: {{ vehicle.isRegistered ? 'Yes' : 'No' }}\r\n      </ul>\r\n      <h2>Features</h2>\r\n      <ul>\r\n        <li *ngFor=\"let f of vehicle.features\">{{ f.name }}</li>\r\n      </ul>\r\n      <h2>Contact</h2>\r\n      <ul>\r\n        <li>Contact Name: {{ vehicle.contact.name }}</li>\r\n        <li>Contact Phone: {{ vehicle.contact.phone }}</li>\r\n        <li>Contact Email: {{ vehicle.contact.email }}</li>\r\n      </ul>\r\n      <br/>\r\n      <p>\r\n        <a class=\"btn btn-primary\" [routerLink]=\"['/vehicles/edit/', vehicle.id]\">Edit</a>\r\n        <button class=\"btn btn-danger\" (click)=\"delete()\">Delete</button>\r\n        <a class=\"btn btn-default\" [routerLink]=\"['/vehicles']\">View All Vehicles</a>\r\n      </p>\r\n    </div>\r\n    <!-- Photos tab -->\r\n    <div role=\"tabpanel\" class=\"tab-pane\" id=\"photos\">\r\n      <h2>Photos</h2>\r\n      <input type=\"file\" (change)=\"uploadPhoto()\" #fileInput>\r\n      <img *ngFor=\"let photo of photos\" src=\"/uploads/{{ photo.fileName }}\"  class=\"img-thumbnail\">      \r\n    </div>\r\n  </div>  \r\n</div>";
+module.exports = "<h1>Vehicle</h1>\r\n <div>\r\n \r\n   <!-- Nav tabs -->\r\n   <ul class=\"nav nav-tabs\" role=\"tablist\">\r\n     <li role=\"presentation\" class=\"active\"><a href=\"#basic\" aria-controls=\"basic\" role=\"tab\" data-toggle=\"tab\">Vehicle</a></li>\r\n     <li role=\"presentation\"><a href=\"#photos\" aria-controls=\"photos\" role=\"tab\" data-toggle=\"tab\">Photos</a></li>\r\n   </ul>\r\n\r\n    <!-- Tab panes -->\r\n  <div class=\"tab-content\" *ngIf=\"vehicle\">\r\n    <!-- Vehicle tab -->\r\n    <div role=\"tabpanel\" class=\"tab-pane active\" id=\"basic\">\r\n      <h2>Basics</h2>\r\n      <ul>\r\n        <li>Make: {{ vehicle.make.name }}</li>\r\n        <li>Model: {{ vehicle.model.name }}</li>\r\n        <li>Registered: {{ vehicle.isRegistered ? 'Yes' : 'No' }}\r\n      </ul>\r\n      <h2>Features</h2>\r\n      <ul>\r\n        <li *ngFor=\"let f of vehicle.features\">{{ f.name }}</li>\r\n      </ul>\r\n      <h2>Contact</h2>\r\n      <ul>\r\n        <li>Contact Name: {{ vehicle.contact.name }}</li>\r\n        <li>Contact Phone: {{ vehicle.contact.phone }}</li>\r\n        <li>Contact Email: {{ vehicle.contact.email }}</li>\r\n      </ul>\r\n      <br/>\r\n      <p>\r\n        <a class=\"btn btn-primary\" [routerLink]=\"['/vehicles/edit/', vehicle.id]\">Edit</a>\r\n        <button class=\"btn btn-danger\" (click)=\"delete()\">Delete</button>\r\n        <a class=\"btn btn-default\" [routerLink]=\"['/vehicles']\">View All Vehicles</a>\r\n      </p>\r\n    </div>\r\n    <!-- Photos tab -->\r\n    <div role=\"tabpanel\" class=\"tab-pane\" id=\"photos\">\r\n      <h2>Photos</h2>\r\n      <input type=\"file\" (change)=\"uploadPhoto()\" #fileInput>      \r\n      <img *ngFor=\"let photo of photos\" src=\"/uploads/{{ photo.fileName }}\" class=\"img-thumbnail\" >\r\n    </div>\r\n  </div>  \r\n</div>";
 
 /***/ }),
 /* 83 */
@@ -15508,6 +15517,79 @@ module.exports = (__webpack_require__(1))(584)
 __webpack_require__(49);
 __webpack_require__(48);
 module.exports = __webpack_require__(47);
+
+
+/***/ }),
+/* 115 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(0);
+var Subject_1 = __webpack_require__(46);
+var http_1 = __webpack_require__(33);
+var ProgressService = (function () {
+    function ProgressService() {
+        this.uploadProgress = new Subject_1.Subject();
+        this.downloadProgress = new Subject_1.Subject();
+    }
+    return ProgressService;
+}());
+ProgressService = __decorate([
+    core_1.Injectable()
+], ProgressService);
+exports.ProgressService = ProgressService;
+var BrowserXhrWithProgress = (function (_super) {
+    __extends(BrowserXhrWithProgress, _super);
+    function BrowserXhrWithProgress(service) {
+        var _this = _super.call(this) || this;
+        _this.service = service;
+        return _this;
+    }
+    BrowserXhrWithProgress.prototype.build = function () {
+        var _this = this;
+        var xhr = _super.prototype.build.call(this);
+        xhr.onprogress = function (event) {
+            _this.service.downloadProgress.next(_this.createProgress(event));
+        };
+        xhr.upload.onprogress = function (event) {
+            _this.service.uploadProgress.next(_this.createProgress(event));
+        };
+        return xhr;
+    };
+    BrowserXhrWithProgress.prototype.createProgress = function (event) {
+        return {
+            total: event.total,
+            percentage: Math.round(event.loaded / event.total * 100)
+        };
+    };
+    return BrowserXhrWithProgress;
+}(http_1.BrowserXhr));
+BrowserXhrWithProgress = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [ProgressService])
+], BrowserXhrWithProgress);
+exports.BrowserXhrWithProgress = BrowserXhrWithProgress;
 
 
 /***/ })

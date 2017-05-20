@@ -27,7 +27,8 @@ namespace Vega.Controllers
         private readonly IMapper _mapper;
         private readonly PhotoSettings _photoSettings;
 
-        public PhotosController(IHostingEnvironment host, IVehicleRepository vehicleRepository, IPhotoRepository photoRepository, IUnitOfWork unitOfWork, IMapper mapper, IOptionsSnapshot<PhotoSettings> options)
+        public PhotosController(IHostingEnvironment host, IVehicleRepository vehicleRepository, IPhotoRepository photoRepository,
+            IUnitOfWork unitOfWork, IMapper mapper, IOptionsSnapshot<PhotoSettings> options)
         {
             _photoSettings = options.Value;
             _host = host;
