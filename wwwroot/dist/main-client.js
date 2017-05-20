@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ad689531bdcf5ecce1d4"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "3b544f3784d9dfb9beb9"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -8140,9 +8140,18 @@ var Subject_1 = __webpack_require__(35);
 var http_1 = __webpack_require__(15);
 var ProgressService = (function () {
     function ProgressService() {
-        this.uploadProgress = new Subject_1.Subject();
         this.downloadProgress = new Subject_1.Subject();
     }
+    ProgressService.prototype.startTracking = function () {
+        this.uploadProgress = new Subject_1.Subject();
+        return this.uploadProgress;
+    };
+    ProgressService.prototype.notify = function (progress) {
+        this.uploadProgress.next(progress);
+    };
+    ProgressService.prototype.endTracking = function () {
+        this.uploadProgress.complete();
+    };
     return ProgressService;
 }());
 ProgressService = __decorate([
@@ -8163,7 +8172,10 @@ var BrowserXhrWithProgress = (function (_super) {
             _this.service.downloadProgress.next(_this.createProgress(event));
         };
         xhr.upload.onprogress = function (event) {
-            _this.service.uploadProgress.next(_this.createProgress(event));
+            _this.service.notify(_this.createProgress(event));
+        };
+        xhr.upload.onloadend = function () {
+            _this.service.endTracking();
         };
         return xhr;
     };
@@ -10027,7 +10039,7 @@ var ViewVehicleComponent = (function () {
     ViewVehicleComponent.prototype.uploadPhoto = function () {
         var _this = this;
         var nativeElement = this.fileInput.nativeElement;
-        this.progressService.uploadProgress
+        this.progressService.startTracking()
             .subscribe(function (progress) {
             console.log(progress);
             _this.zone.run(function () {
