@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "fb580b4305e35d16c443"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "10a69d111159f3377c8b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -5751,18 +5751,18 @@ __webpack_require__(93);
 var VehicleService = (function () {
     function VehicleService(http) {
         this.http = http;
-        this.vehiclesEndpoint = 'api/vehicles';
+        this.vehiclesEndpoint = '/api/vehicles';
     }
     VehicleService.prototype.getFeatures = function () {
         return this.http.get('/api/features')
             .map(function (res) { return res.json(); });
     };
-    VehicleService.prototype.create = function (vehicle) {
-        return this.http.post(this.vehiclesEndpoint, vehicle)
-            .map(function (res) { return res.json(); });
-    };
     VehicleService.prototype.getMakes = function () {
         return this.http.get('/api/makes')
+            .map(function (res) { return res.json(); });
+    };
+    VehicleService.prototype.create = function (vehicle) {
+        return this.http.post(this.vehiclesEndpoint, vehicle)
             .map(function (res) { return res.json(); });
     };
     VehicleService.prototype.getVehicle = function (id) {
@@ -8140,7 +8140,6 @@ var Subject_1 = __webpack_require__(35);
 var http_1 = __webpack_require__(15);
 var ProgressService = (function () {
     function ProgressService() {
-        this.downloadProgress = new Subject_1.Subject();
     }
     ProgressService.prototype.startTracking = function () {
         this.uploadProgress = new Subject_1.Subject();
@@ -8168,9 +8167,6 @@ var BrowserXhrWithProgress = (function (_super) {
     BrowserXhrWithProgress.prototype.build = function () {
         var _this = this;
         var xhr = _super.prototype.build.call(this);
-        xhr.onprogress = function (event) {
-            _this.service.downloadProgress.next(_this.createProgress(event));
-        };
         xhr.upload.onprogress = function (event) {
             _this.service.notify(_this.createProgress(event));
         };
@@ -8475,7 +8471,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __webpack_require__(111);
 var core_1 = __webpack_require__(0);
 var angular2_universal_1 = __webpack_require__(47);
-var app_module_1 = __webpack_require__(59);
+var app_module_1 = __webpack_require__(60);
 __webpack_require__(112);
 var rootElemTagName = 'app'; // Update this if you change your root component selector
 // Enable either Hot Module Reloading or production mode
@@ -9418,6 +9414,59 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var Raven = __webpack_require__(45);
+var ng2_toasty_1 = __webpack_require__(25);
+var core_1 = __webpack_require__(0);
+var AppErrorHandler = (function () {
+    function AppErrorHandler(ngZone, toastyService) {
+        this.ngZone = ngZone;
+        this.toastyService = toastyService;
+    }
+    AppErrorHandler.prototype.handleError = function (error) {
+        var _this = this;
+        this.ngZone.run(function () {
+            _this.toastyService.error({
+                title: 'Error',
+                msg: 'An unexpected error happened.',
+                theme: 'bootstrap',
+                showClose: true,
+                timeout: 5000
+            });
+        });
+        if (!core_1.isDevMode())
+            Raven.captureException(error.originalError || error);
+        else
+            throw error;
+    };
+    return AppErrorHandler;
+}());
+AppErrorHandler = __decorate([
+    __param(1, core_1.Inject(ng2_toasty_1.ToastyService)),
+    __metadata("design:paramtypes", [core_1.NgZone,
+        ng2_toasty_1.ToastyService])
+], AppErrorHandler);
+exports.AppErrorHandler = AppErrorHandler;
+
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var progress_service_1 = __webpack_require__(43);
 var http_1 = __webpack_require__(15);
@@ -9433,7 +9482,7 @@ var ng2_toasty_1 = __webpack_require__(25);
 var angular2_universal_1 = __webpack_require__(47);
 var app_component_1 = __webpack_require__(61);
 var vehicle_service_1 = __webpack_require__(23);
-var appp_error_handler_1 = __webpack_require__(60);
+var app_error_handler_1 = __webpack_require__(59);
 var navmenu_component_1 = __webpack_require__(65);
 var home_component_1 = __webpack_require__(64);
 var fetchdata_component_1 = __webpack_require__(63);
@@ -9478,7 +9527,7 @@ AppModule = __decorate([
             ])
         ],
         providers: [
-            { provide: core_1.ErrorHandler, useClass: appp_error_handler_1.AppErrorHandler },
+            { provide: core_1.ErrorHandler, useClass: app_error_handler_1.AppErrorHandler },
             { provide: http_1.BrowserXhr, useClass: progress_service_1.BrowserXhrWithProgress },
             vehicle_service_1.VehicleService,
             photo_service_1.PhotoService,
@@ -9487,59 +9536,6 @@ AppModule = __decorate([
     })
 ], AppModule);
 exports.AppModule = AppModule;
-
-
-/***/ }),
-/* 60 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var Raven = __webpack_require__(45);
-var ng2_toasty_1 = __webpack_require__(25);
-var core_1 = __webpack_require__(0);
-var AppErrorHandler = (function () {
-    function AppErrorHandler(ngZone, toastyService) {
-        this.ngZone = ngZone;
-        this.toastyService = toastyService;
-    }
-    AppErrorHandler.prototype.handleError = function (error) {
-        var _this = this;
-        this.ngZone.run(function () {
-            _this.toastyService.error({
-                title: 'Error',
-                msg: 'An unexpected error happened.',
-                theme: 'bootstrap',
-                showClose: true,
-                timeout: 5000
-            });
-        });
-        if (!core_1.isDevMode())
-            Raven.captureException(error.originalError || error);
-        else
-            throw error;
-    };
-    return AppErrorHandler;
-}());
-AppErrorHandler = __decorate([
-    __param(1, core_1.Inject(ng2_toasty_1.ToastyService)),
-    __metadata("design:paramtypes", [core_1.NgZone,
-        ng2_toasty_1.ToastyService])
-], AppErrorHandler);
-exports.AppErrorHandler = AppErrorHandler;
 
 
 /***/ }),
@@ -9958,7 +9954,7 @@ var VehicleListComponent = (function () {
             this.query.sortBy = columnName;
             this.query.isSortAscending = true;
         }
-        this.populateVehicles;
+        this.populateVehicles();
     };
     VehicleListComponent.prototype.onPageChange = function (page) {
         this.query.page = page;
@@ -9992,11 +9988,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var progress_service_1 = __webpack_require__(43);
+var photo_service_1 = __webpack_require__(42);
 var ng2_toasty_1 = __webpack_require__(25);
 var vehicle_service_1 = __webpack_require__(23);
 var core_1 = __webpack_require__(0);
 var router_1 = __webpack_require__(34);
-var photo_service_1 = __webpack_require__(42);
 var ViewVehicleComponent = (function () {
     function ViewVehicleComponent(zone, route, router, toasty, progressService, photoService, vehicleService) {
         var _this = this;
@@ -10040,8 +10036,8 @@ var ViewVehicleComponent = (function () {
         var _this = this;
         this.progressService.startTracking()
             .subscribe(function (progress) {
-            console.log(progress);
             _this.zone.run(function () {
+                _this.progress = progress;
             });
         }, null, function () { _this.progress = null; });
         var nativeElement = this.fileInput.nativeElement;
@@ -10495,7 +10491,7 @@ module.exports = "<h2>Vehicles</h2>\r\n<p>\r\n  <a [routerLink]=\"['/vehicles/ne
 /* 83 */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>Vehicle</h1>\r\n <div>\r\n \r\n   <!-- Nav tabs -->\r\n   <ul class=\"nav nav-tabs\" role=\"tablist\">\r\n     <li role=\"presentation\" class=\"active\"><a href=\"#basic\" aria-controls=\"basic\" role=\"tab\" data-toggle=\"tab\">Vehicle</a></li>\r\n     <li role=\"presentation\"><a href=\"#photos\" aria-controls=\"photos\" role=\"tab\" data-toggle=\"tab\">Photos</a></li>\r\n   </ul>\r\n\r\n    <!-- Tab panes -->\r\n  <div class=\"tab-content\" *ngIf=\"vehicle\">\r\n    <!-- Vehicle tab -->\r\n    <div role=\"tabpanel\" class=\"tab-pane active\" id=\"basic\">\r\n      <h2>Basics</h2>\r\n      <ul>\r\n        <li>Make: {{ vehicle.make.name }}</li>\r\n        <li>Model: {{ vehicle.model.name }}</li>\r\n        <li>Registered: {{ vehicle.isRegistered ? 'Yes' : 'No' }}\r\n      </ul>\r\n      <h2>Features</h2>\r\n      <ul>\r\n        <li *ngFor=\"let f of vehicle.features\">{{ f.name }}</li>\r\n      </ul>\r\n      <h2>Contact</h2>\r\n      <ul>\r\n        <li>Contact Name: {{ vehicle.contact.name }}</li>\r\n        <li>Contact Phone: {{ vehicle.contact.phone }}</li>\r\n        <li>Contact Email: {{ vehicle.contact.email }}</li>\r\n      </ul>\r\n      <br/>\r\n      <p>\r\n        <a class=\"btn btn-primary\" [routerLink]=\"['/vehicles/edit/', vehicle.id]\">Edit</a>\r\n        <button class=\"btn btn-danger\" (click)=\"delete()\">Delete</button>\r\n        <a class=\"btn btn-default\" [routerLink]=\"['/vehicles']\">View All Vehicles</a>\r\n      </p>\r\n    </div>\r\n    <!-- Photos tab -->\r\n    <div role=\"tabpanel\" class=\"tab-pane\" id=\"photos\">\r\n      <h2>Photos</h2>\r\n      <input type=\"file\" (change)=\"uploadPhoto()\" #fileInput>   \r\n\r\n      <div class=\"progress\" *ngIf=\"progress && progress.percentage < 100\" >\r\n        <div class=\"progress-bar\" [style.width]=\"progress.percentage + '%'\">\r\n          <span class=\"sr-only\"></span>{{ progress.percentage }}% Complete</div>\r\n      </div>   \r\n\r\n      <img *ngFor=\"let photo of photos\" src=\"/uploads/{{ photo.fileName }}\" class=\"img-thumbnail\" >\r\n    </div>\r\n  </div>  \r\n</div>";
+module.exports = "<h1>Vehicle</h1>\r\n <div>\r\n \r\n   <!-- Nav tabs -->\r\n   <ul class=\"nav nav-tabs\" role=\"tablist\">\r\n     <li role=\"presentation\" class=\"active\"><a href=\"#basic\" aria-controls=\"basic\" role=\"tab\" data-toggle=\"tab\">Vehicle</a></li>\r\n     <li role=\"presentation\"><a href=\"#photos\" aria-controls=\"photos\" role=\"tab\" data-toggle=\"tab\">Photos</a></li>\r\n   </ul>\r\n\r\n    <!-- Tab panes -->\r\n  <div class=\"tab-content\" *ngIf=\"vehicle\">\r\n    <!-- Vehicle tab -->\r\n    <div role=\"tabpanel\" class=\"tab-pane active\" id=\"basic\">\r\n      <h2>Basics</h2>\r\n      <ul>\r\n        <li>Make: {{ vehicle.make.name }}</li>\r\n        <li>Model: {{ vehicle.model.name }}</li>\r\n        <li>Registered: {{ vehicle.isRegistered ? 'Yes' : 'No' }}\r\n      </ul>\r\n      <h2>Features</h2>\r\n      <ul>\r\n        <li *ngFor=\"let f of vehicle.features\">{{ f.name }}</li>\r\n      </ul>\r\n      <h2>Contact</h2>\r\n      <ul>\r\n        <li>Contact Name: {{ vehicle.contact.name }}</li>\r\n        <li>Contact Phone: {{ vehicle.contact.phone }}</li>\r\n        <li>Contact Email: {{ vehicle.contact.email }}</li>\r\n      </ul>\r\n      <br/>\r\n      <p>\r\n        <a class=\"btn btn-primary\" [routerLink]=\"['/vehicles/edit/', vehicle.id]\">Edit</a>\r\n        <button class=\"btn btn-danger\" (click)=\"delete()\">Delete</button>\r\n        <a class=\"btn btn-default\" [routerLink]=\"['/vehicles']\">View All Vehicles</a>\r\n      </p>\r\n    </div>\r\n    <!-- Photos tab -->\r\n    <div role=\"tabpanel\" class=\"tab-pane\" id=\"photos\">\r\n      <h2>Photos</h2>\r\n      <input type=\"file\" (change)=\"uploadPhoto()\" #fileInput>   \r\n      <div class=\"progress\" *ngIf=\"progress && progress.percentage < 100\" >\r\n        <div class=\"progress-bar\" [style.width]=\"progress.percentage + '%'\">\r\n          <span class=\"sr-only\">{{ progress.percentage }}% Complete</span>\r\n          </div>\r\n      </div>         \r\n      <img *ngFor=\"let photo of photos\" src=\"/uploads/{{ photo.fileName }}\" class=\"img-thumbnail\" >\r\n    </div>\r\n  </div>  \r\n</div>";
 
 /***/ }),
 /* 84 */

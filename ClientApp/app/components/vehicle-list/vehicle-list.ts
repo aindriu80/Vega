@@ -56,7 +56,7 @@ export class VehicleListComponent implements OnInit {
             this.query.sortBy = columnName;
             this.query.isSortAscending = true;        
         }
-        this.populateVehicles;
+        this.populateVehicles();
     }
     onPageChange(page){
         this.query.page = page;

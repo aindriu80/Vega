@@ -9,15 +9,15 @@ namespace Vega.Extentions
     {
         public static IQueryable<T> ApplyOrdering<T>(this IQueryable<T> query, IQueryObject vehicleQuery, Dictionary<string, Expression<Func<T, object>>> columnsMap)
         {
-            if (String.IsNullOrWhiteSpace(vehicleQuery.Sortby) || !columnsMap.ContainsKey(vehicleQuery.Sortby))
+            if (String.IsNullOrWhiteSpace(vehicleQuery.SortBy) || !columnsMap.ContainsKey(vehicleQuery.SortBy))
                 return query;
 
 
             if (vehicleQuery.IsSortAscending)
-                return query.OrderBy(columnsMap[vehicleQuery.Sortby]);
+                return query.OrderBy(columnsMap[vehicleQuery.SortBy]);
 
             else
-                return query.OrderByDescending(columnsMap[vehicleQuery.Sortby]);
+                return query.OrderByDescending(columnsMap[vehicleQuery.SortBy]);
 
         }
 

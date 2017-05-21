@@ -15,8 +15,7 @@ export class ProgressService {
     }
     endTracking(){
         this.uploadProgress.complete();
-}  
-    downloadProgress: Subject<any> = new Subject();
+}
 }
 
 @Injectable()
@@ -25,9 +24,7 @@ export class BrowserXhrWithProgress extends BrowserXhr {
     build(): XMLHttpRequest {
         var xhr: XMLHttpRequest = super.build();
         
-    xhr.onprogress = (event) => {
-      this.service.downloadProgress.next(this.createProgress(event));
-    };
+
 
     xhr.upload.onprogress = (event) => {
       this.service.notify(this.createProgress(event));

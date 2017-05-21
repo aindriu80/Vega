@@ -53,7 +53,7 @@ namespace Vega.Mapping
                         v.Features.Remove(f);
 
                     // Add new features
-                    var addFeatures = vr.Features.Where(id => v.Features.Any(f => f.FeatureId == id)).Select(id => new VehicleFeature { FeatureId = id }).ToList();
+                    var addFeatures = vr.Features.Where(id => !v.Features.Any(f => f.FeatureId == id)).Select(id => new VehicleFeature { FeatureId = id }).ToList();
                     foreach (var f in addFeatures)
                         v.Features.Add(f);
                 });

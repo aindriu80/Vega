@@ -64,8 +64,8 @@ namespace Vega.Controllers
             if (!Directory.Exists(uploadsFolderPath))
                 Directory.CreateDirectory(uploadsFolderPath);
 
-            var filename = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-            var filePath = Path.Combine(uploadsFolderPath, filename);
+            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+            var filePath = Path.Combine(uploadsFolderPath, fileName);
 
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
@@ -74,7 +74,7 @@ namespace Vega.Controllers
 
             //System.Drawing not in .NET Core at the moment
 
-            var photo = new Photo { Filename = filename };
+            var photo = new Photo { Filename = fileName };
             vehicle.Photos.Add(photo);
             await _unitOfWork.CompleteAsync();
 

@@ -1,9 +1,9 @@
 import { ProgressService } from './../../services/progress.service';
+import { PhotoService } from './../../services/photo.service';
 import { ToastyService } from 'ng2-toasty';
 import { VehicleService } from './../../services/vehicle.service';
 import { Component, OnInit, ElementRef, ViewChild, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PhotoService } from '../../services/photo.service';
 
 @Component({
   templateUrl: 'view-vehicle.html'
@@ -21,8 +21,7 @@ export class ViewVehicleComponent implements OnInit {
     private router: Router,
     private toasty: ToastyService,
     private progressService: ProgressService,
-    private photoService: PhotoService,
-    
+    private photoService: PhotoService,    
     private vehicleService: VehicleService) { 
 
     route.params.subscribe(p => {
@@ -37,8 +36,6 @@ export class ViewVehicleComponent implements OnInit {
   ngOnInit() { 
     this.photoService.getPhotos(this.vehicleId)
       .subscribe(photos => this.photos = photos);
-
-
     this.vehicleService.getVehicle(this.vehicleId)
       .subscribe(
         v => this.vehicle = v,
@@ -60,13 +57,10 @@ export class ViewVehicleComponent implements OnInit {
   }
 
   uploadPhoto(){
-  
-
   this.progressService.startTracking()
-  .subscribe(progress => {
-    console.log(progress);
+  .subscribe(progress => {    
     this.zone.run(() => {
-     
+     this.progress = progress;
     });   
   },
   null,

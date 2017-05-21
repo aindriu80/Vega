@@ -10,7 +10,7 @@ using Vega.Core;
 using Vega.Core.Models;
 using Vega.Persistence;
 
-namespace WebApplicationBasic
+namespace Vega
 {
     public class Startup
     {

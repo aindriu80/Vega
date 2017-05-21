@@ -15,7 +15,7 @@ import { UniversalModule } from 'angular2-universal';
 import { AppComponent } from './components/app/app.component'
 
 import { VehicleService } from "./services/vehicle.service";
-import { AppErrorHandler } from './appp.error-handler';
+import { AppErrorHandler } from './app.error-handler';
 
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
