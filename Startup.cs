@@ -63,6 +63,13 @@ namespace Vega
 
             app.UseStaticFiles();
 
+            var options = new JwtBearerOptions
+            {
+                Audience = "https://api.aindriu.vega.com",
+                Authority = "https://aindriu80.eu.auth0.com/"
+            };
+            app.UseJwtBearerAuthentication(options);
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
