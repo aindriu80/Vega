@@ -1,4 +1,6 @@
+import { AuthService } from './../../services/auth.service';
 import { Component } from '@angular/core';
+
 
 @Component({
     selector: 'nav-menu',
@@ -6,4 +8,5 @@ import { Component } from '@angular/core';
     styleUrls: ['./navmenu.component.css']
 })
 export class NavMenuComponent {
+    constructor(private auth: AuthService) {}
 }
