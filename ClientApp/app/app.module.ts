@@ -1,3 +1,4 @@
+import { AuthService } from './services/auth.service';
 import { BrowserXhrWithProgress, ProgressService } from './services/progress.service';
 import { BrowserXhr } from '@angular/http';
 import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle';
@@ -23,12 +24,9 @@ import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { PhotoService } from "./services/photo.service";
 
-import { AuthService } from "./services/auth.service";
 
-
-
-
-
+   
+ 
 Raven
   .config('https://a2bcc6c4ad14410c9dc8fa71540b6986@sentry.io/167727')
   .install();

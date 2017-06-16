@@ -12,13 +12,26 @@
         <div class='clearfix'></div>
         <div class='navbar-collapse collapse'>
             <ul class='nav navbar-nav'>
-                <li [routerLinkActive]="['link-active']" >
-                <a (click)="auth.login()" *ngIf="!auth.authenticated()">
-                    <span class='glyphicon glyphicon-user'></span> Login
-                </a>
-                <a (click)="auth.logout()" *ngIf="auth.authenticated()">
-                    <span class='glyphicon glyphicon-user'></span> Logout
-                </a>
+                
+                <li [routerLinkActive]="['link-active']">
+                    <a href="https://aindriu80.eu.auth0.com/login?client=smlkRNkeVFWJUpu9l9w6rVf2ShJLYoNT" *ngIf="!auth.authenticated()">
+                        <span class='glyphicon glyphicon-user'></span> Login
+                    </a>
+                    <a (click)="auth.logout()" *ngIf="auth.authenticated()">
+                        <span class='glyphicon glyphicon-user'></span> Logout
+                    </a>
+                </li>
+
+                <li [routerLinkActive]="['link-active']">
+                    <a (click)="auth.login()" *ngIf="!auth.authenticated()">
+                        <span class='glyphicon glyphicon-user'></span> Login
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a (click)="auth.logout()" *ngIf="auth.authenticated()">
+                        <span class='glyphicon glyphicon-user'></span> Logout
+                    </a>
+                </li>
                 <li [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{exact: true}">
                     <a [routerLink]="['/vehicles']">
                         <span class='glyphicon glyphicon-home'></span> Vehicles
