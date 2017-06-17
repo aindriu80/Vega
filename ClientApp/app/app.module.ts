@@ -1,4 +1,5 @@
-import { AuthService } from './services/auth.service';
+import { AdminComponent } from './admin/admin.component';
+import { Auth } from './services/auth.service';
 import { BrowserXhrWithProgress, ProgressService } from './services/progress.service';
 import { BrowserXhr } from '@angular/http';
 import { ViewVehicleComponent } from './components/view-vehicle/view-vehicle';
@@ -44,6 +45,7 @@ Raven
         VehicleListComponent,                
         PaginationComponent,
         ViewVehicleComponent,
+        AdminComponent
     ],
     
     imports: [
@@ -57,6 +59,7 @@ Raven
             { path: 'vehicles/edit/:id', component:VehicleFormComponent },
             { path: 'vehicles/:id', component:ViewVehicleComponent },
             { path: 'vehicles', component:VehicleListComponent },
+            { path: 'admin', component:AdminComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo: 'home' }
@@ -65,7 +68,7 @@ Raven
     providers: [
         { provide: ErrorHandler, useClass: AppErrorHandler},
         { provide: BrowserXhr, useClass: BrowserXhrWithProgress },
-        AuthService,
+        Auth,
         VehicleService,
         PhotoService,
         ProgressService
