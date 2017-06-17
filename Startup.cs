@@ -37,6 +37,7 @@ namespace Vega
 
             services.AddDbContext<VegaDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             // Add framework services.
             services.AddMvc();
             services.AddAutoMapper();
@@ -63,14 +64,12 @@ namespace Vega
 
             app.UseStaticFiles();
 
-
-
-            //var options = new JwtBearerOptions
-            //{
-            //    Audience = "https://api.aindriu.vega.com",
-            //    Authority = "https://aindriu80.eu.auth0.com/"
-            //};
-            //app.UseJwtBearerAuthentication(options);
+            var options = new JwtBearerOptions
+            {
+                Audience = "https://api.aindriu.vega.com",
+                Authority = "https://aindriu80.eu.auth0.com/"
+            };
+            app.UseJwtBearerAuthentication(options);
 
             app.UseMvc(routes =>
             {
