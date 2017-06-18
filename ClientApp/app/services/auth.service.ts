@@ -18,16 +18,34 @@ export class Auth {
     //   redirectUri: 'http://localhost::11562/callback',      
     //   scope: 'openid'
     // });
-
-
+    
     profile: any;
-  private roles:string[] = [];
+    private roles:string[] = [];
 
 
     // Configure Auth0
     lock = new Auth0Lock('smlkRNkeVFWJUpu9l9w6rVf2ShJLYoNT', 'aindriu80.eu.auth0.com', {});
 
     constructor() {
+        this.readUserRolesFromLocalStorage();
+            // Add callback for lock `authenticated` event
+        this.lock.on("authenticated", (authResult) => this.onUserAuthenticaed(authResult));
+    }
+
+    private onUserAuthenticaed(authResult) {
+        localStorage.setItem('token', authResult.accessToken);
+
+        this.lock.getUserInfo(authResult.accessToken, (error, profile) => {
+            if (error)
+                throw error;
+
+            localStorage.setItem('profile', JSON.stringify(profile));
+
+            this.readUserRolesFromLocalStorage();
+        });
+    }
+
+    private readUserRolesFromLocalStorage() {
         this.profile = JSON.parse(localStorage.getItem('profile'));
 
         var token = localStorage.getItem('token');
@@ -36,26 +54,7 @@ export class Auth {
             var decodedToken = jwtHelper.decodeToken(token);
             this.roles = decodedToken['https://vega.com/roles'];
         }
-
-        // Add callback for lock `authenticated` event
-        this.lock.on("authenticated", (authResult) => {
-            localStorage.setItem('token', authResult.accessToken);
-
-            var jwtHelper = new JwtHelper();
-            var decodedToken = jwtHelper.decodeToken(authResult.accessToken);
-            this.roles = decodedToken['https://vega.com/roles'];
-
-            this.lock.getUserInfo(authResult.accessToken, (error, profile) => {
-                if (error)
-                    throw error;
-
-                console.log(profile);
-                localStorage.setItem('profile', JSON.stringify(profile));
-                this.profile = profile;
-            });
-        });
     }
-
     public isInRole(roleName){
             return this.roles.indexOf(roleName) > -1;
     }
