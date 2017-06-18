@@ -24,7 +24,7 @@ namespace Vega.Controllers
             _mapper = mapper;
         }
         [HttpPost]
-        [Authorize(AppPolicies.RequireAdminRole)]
+        [Authorize]
         public async Task<IActionResult> CreateVehicle([FromBody] SaveVehicleResource vehicleResource)
         {
 

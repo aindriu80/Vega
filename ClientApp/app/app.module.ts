@@ -58,8 +58,8 @@ Raven
         RouterModule.forRoot([
             { path: '', redirectTo: 'vehicles', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
-            { path: 'vehicles/new', component:VehicleFormComponent },
-            { path: 'vehicles/edit/:id', component:VehicleFormComponent },
+            { path: 'vehicles/new', component:VehicleFormComponent, canActivate: [ AuthGuard] },
+            { path: 'vehicles/edit/:id', component:VehicleFormComponent,canActivate: [ AuthGuard]  },
             { path: 'vehicles/:id', component:ViewVehicleComponent },
             { path: 'vehicles', component:VehicleListComponent },
             { path: 'admin', component: AdminComponent, canActivate: [ AdminAuthGuard ] },
