@@ -26,6 +26,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { PhotoService } from "./services/photo.service";
+import { AUTH_PROVIDERS } from "angular2-jwt/angular2-jwt";
 
 
    
@@ -68,14 +69,14 @@ Raven
         ])
     ],
     providers: [
-        { provide: ErrorHandler, useClass: AppErrorHandler},
-        { provide: BrowserXhr, useClass: BrowserXhrWithProgress },
+        { provide: ErrorHandler, useClass: AppErrorHandler},        
         Auth,
         AuthGuard,
+        AUTH_PROVIDERS,
         AdminAuthGuard,
         VehicleService,
         PhotoService,
-        ProgressService
+        
         
     ]
 })

@@ -11,9 +11,11 @@ export class ProgressService {
         return this.uploadProgress;
     }
     notify(progress){
+        if (this.uploadProgress)
         this.uploadProgress.next(progress);
     }
     endTracking(){
+        if (this.uploadProgress)
         this.uploadProgress.complete();
 }
 }
