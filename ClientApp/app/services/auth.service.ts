@@ -1,82 +1,61 @@
-﻿// app/auth.service.ts
+﻿// src/app/auth/auth.service.ts
 
 import { Injectable } from '@angular/core';
-import { tokenNotExpired, JwtHelper } from 'angular2-jwt';
-
-// Avoid name not found warnings
-import Auth0Lock from 'auth0-lock';
-//import auth0 from 'auth0-js';
+import { Router } from '@angular/router';
+import 'rxjs/add/operator/filter';
+import * as auth0 from 'auth0-js';
 
 @Injectable()
-export class Auth {
+export class AuthService {
+    auth0 = new auth0.WebAuth({
+        clientID: 'smlkRNkeVFWJUpu9l9w6rVf2ShJLYoNT',
+        domain: 'aindriu80.eu.auth0.com',
+        responseType: 'token id_token',
+        audience: 'https://aindriu80.eu.auth0.com/userinfo',
+        redirectUri: 'http://localhost:11562/callback',
+        scope: 'openid'
+    });
 
-    //auth0 = new auth0.WebAuth({
-    //   clientID: 'smlkRNkeVFWJUpu9l9w6rVf2ShJLYoNT',
-    //   domain: 'aindriu80.eu.auth0.com',
-    //   responseType: 'token',
-    //   audience: 'https://aindriu80.eu.auth0.com/userinfo',
-    //   redirectUri: 'http://localhost::11562/callback',      
-    //   scope: 'openid'
-    // });
-    
-    profile: any;
-    private roles:string[] = [];
+    constructor(public router: Router) { }
 
-
-    // Configure Auth0
-    lock = new Auth0Lock('smlkRNkeVFWJUpu9l9w6rVf2ShJLYoNT', 'aindriu80.eu.auth0.com', {});
-
-    constructor() {
-        this.readUserRolesFromLocalStorage();
-            // Add callback for lock `authenticated` event
-        this.lock.on("authenticated", (authResult) => this.onUserAuthenticaed(authResult));
+    public login(): void {
+        this.auth0.authorize();
     }
 
-    private onUserAuthenticaed(authResult) {
-        localStorage.setItem('token', authResult.accessToken);
-
-        this.lock.getUserInfo(authResult.accessToken, (error, profile) => {
-            if (error)
-                throw error;
-
-            localStorage.setItem('profile', JSON.stringify(profile));
-
-            this.readUserRolesFromLocalStorage();
+    public handleAuthentication(): void {
+        this.auth0.parseHash((err, authResult) => {
+            if (authResult && authResult.accessToken && authResult.idToken) {
+                window.location.hash = '';
+                this.setSession(authResult);
+                this.router.navigate(['/home']);
+            } else if (err) {
+                this.router.navigate(['/home']);
+                console.log(err);
+            }
         });
     }
 
-    private readUserRolesFromLocalStorage() {
-        this.profile = JSON.parse(localStorage.getItem('profile'));
-
-        var token = localStorage.getItem('token');
-        if (token) {
-            var jwtHelper = new JwtHelper();
-            var decodedToken = jwtHelper.decodeToken(token);
-            this.roles = decodedToken['https://vega.com/roles'];
-        }
-    }
-    public isInRole(roleName){
-            return this.roles.indexOf(roleName) > -1;
+    private setSession(authResult): void {
+        // Set the time that the access token will expire at
+        const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
+        localStorage.setItem('access_token', authResult.accessToken);
+        localStorage.setItem('id_token', authResult.idToken);
+        localStorage.setItem('expires_at', expiresAt);
     }
 
-    public login() {
-        // Call the show method to display the widget.
-        this.lock.show();
+    public logout(): void {
+        // Remove tokens and expiry time from localStorage
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('id_token');
+        localStorage.removeItem('expires_at');
+        // Go back to the home route
+        this.router.navigate(['/']);
     }
 
-    public authenticated() {
-        // Check if there's an unexpired JWT
-        // This searches for an item in localStorage with key == 'token'
-        return tokenNotExpired('token');
+    public isAuthenticated(): boolean {
+        // Check whether the current time is past the
+        // access token's expiry time
+        const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+        return new Date().getTime() < expiresAt;
     }
-
-    public logout() {
-        // Remove token from localStorage
-        localStorage.removeItem('token');
-        localStorage.removeItem('profile');
-        this.profile = null;
-        this.roles = [];
-    }
-
-
 }

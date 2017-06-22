@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Vega.Controllers;
 using Vega.Core;
 using Vega.Core.Models;
 using Vega.Persistence;
@@ -39,11 +38,6 @@ namespace Vega
             services.AddDbContext<VegaDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy(AppPolicies.RequireAdminRole, policy => policy.RequireClaim("https://vega.com/roles", "Admin"));
-            });
-
             // Add framework services.
             services.AddMvc();
             services.AddAutoMapper();
@@ -69,13 +63,6 @@ namespace Vega
             }
 
             app.UseStaticFiles();
-
-            var options = new JwtBearerOptions
-            {
-                Audience = "https://api.aindriu.vega.com",
-                Authority = "https://aindriu80.eu.auth0.com/"
-            };
-            app.UseJwtBearerAuthentication(options);
 
             app.UseMvc(routes =>
             {

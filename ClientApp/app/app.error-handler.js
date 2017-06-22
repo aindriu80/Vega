@@ -41,7 +41,7 @@ var AppErrorHandler = (function () {
 AppErrorHandler = __decorate([
     __param(1, core_1.Inject(ng2_toasty_1.ToastyService)),
     __metadata("design:paramtypes", [core_1.NgZone,
-        ng2_toasty_1.ToastyService])
+    ng2_toasty_1.ToastyService])
 ], AppErrorHandler);
 exports.AppErrorHandler = AppErrorHandler;
 //# sourceMappingURL=app.error-handler.js.map

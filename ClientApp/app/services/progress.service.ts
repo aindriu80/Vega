@@ -11,11 +11,9 @@ export class ProgressService {
         return this.uploadProgress;
     }
     notify(progress){
-        if (this.uploadProgress)
         this.uploadProgress.next(progress);
     }
     endTracking(){
-        if (this.uploadProgress)
         this.uploadProgress.complete();
 }
 }
@@ -25,8 +23,6 @@ export class BrowserXhrWithProgress extends BrowserXhr {
     constructor(private service: ProgressService) { super();}
     build(): XMLHttpRequest {
         var xhr: XMLHttpRequest = super.build();
-        
-
 
     xhr.upload.onprogress = (event) => {
       this.service.notify(this.createProgress(event));
@@ -36,7 +32,7 @@ export class BrowserXhrWithProgress extends BrowserXhr {
         this.service.endTracking();
     }
 
-    return xhr; 
+    return xhr;
   }
 
   private createProgress(event) {

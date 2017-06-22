@@ -12,13 +12,10 @@ namespace Vega.Extentions
             if (String.IsNullOrWhiteSpace(vehicleQuery.SortBy) || !columnsMap.ContainsKey(vehicleQuery.SortBy))
                 return query;
 
-
             if (vehicleQuery.IsSortAscending)
                 return query.OrderBy(columnsMap[vehicleQuery.SortBy]);
-
             else
                 return query.OrderByDescending(columnsMap[vehicleQuery.SortBy]);
-
         }
 
         public static IQueryable<T> ApplyPaging<T>(this IQueryable<T> query, IQueryObject vehicleQuery)
@@ -32,7 +29,4 @@ namespace Vega.Extentions
             return query.Skip((vehicleQuery.Page - 1) * vehicleQuery.PageSize).Take(vehicleQuery.PageSize);
         }
     }
-
-
-
 }

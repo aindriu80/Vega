@@ -13,10 +13,12 @@ namespace Vega.Persistence
     public class VehicleRepository : IVehicleRepository
     {
         private readonly VegaDbContext _context;
+
         public VehicleRepository(VegaDbContext context)
         {
             _context = context;
         }
+
         public async Task<Vehicle> GetVehicle(int id, bool includeRelated = true)
         {
             if (!includeRelated)
@@ -34,6 +36,7 @@ namespace Vega.Persistence
         {
             _context.Vehicles.Add(vehicle);
         }
+
         public void Remove(Vehicle vehicle)
         {
             _context.Remove(vehicle);
@@ -61,9 +64,7 @@ namespace Vega.Persistence
                 ["make"] = v => v.Model.Make.Name,
                 ["model"] = v => v.Model.Name,
                 ["contactName"] = v => v.ContactName
-
             };
-
 
             query = query.ApplyOrdering(vehicleQuery, columnsMap);
 
@@ -75,8 +76,5 @@ namespace Vega.Persistence
 
             return result;
         }
-
-
-
     }
 }

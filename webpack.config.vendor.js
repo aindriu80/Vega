@@ -15,7 +15,8 @@ module.exports = (env) => {
             ]
         },
         entry: {
-            vendor: ['@angular/common',
+            vendor: [
+                '@angular/common',
                 '@angular/compiler',
                 '@angular/core',
                 '@angular/http',
@@ -26,7 +27,6 @@ module.exports = (env) => {
                 'angular2-jwt',
                 'angular2-universal',
                 'angular2-universal-polyfills',
-                'auth0-lock',
                 'bootstrap',
                 'bootstrap/dist/css/bootstrap.css',
                 'es6-shim',
@@ -38,7 +38,8 @@ module.exports = (env) => {
                 'jquery',
                 'raven-js',
                 'underscore',
-                'zone.js',]
+                'zone.js',
+            ]
         },
         output: {
             publicPath: '/dist/',

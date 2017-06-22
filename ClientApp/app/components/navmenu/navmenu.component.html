@@ -12,12 +12,13 @@
         <div class='clearfix'></div>
         <div class='navbar-collapse collapse'>
             <ul class='nav navbar-nav'>
-                
                 <li [routerLinkActive]="['link-active']">
-                    <a href="https://aindriu80.eu.auth0.com/login?client=smlkRNkeVFWJUpu9l9w6rVf2ShJLYoNT" *ngIf="!auth.authenticated()">
+                    <a (click)="auth.login()" *ngIf="!auth.isAuthenticated()">
                         <span class='glyphicon glyphicon-user'></span> Login
                     </a>
-                    <a (click)="auth.logout()" *ngIf="auth.authenticated()">
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a (click)="auth.logout()" *ngIf="auth.isAuthenticated()">
                         <span class='glyphicon glyphicon-user'></span> Logout
                     </a>
                 </li>
@@ -32,12 +33,16 @@
                         <span class='glyphicon glyphicon-plus'></span> New Vehicle
                     </a>
                 </li>
-                <li [routerLinkActive]="['link-active']" *ngIf="auth.isInRole('Admin')">
-                    <a [routerLink]="['/admin']">
-                        <span class="fa fa-calculator" aria-hidden="true"></span> Admin
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/counter']">
+                        <span class="fa fa-calculator" aria-hidden="true"></span> Counter
                     </a>
                 </li>
-                
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/fetch-data']">
+                        <span class='glyphicon glyphicon-th-list'></span> Fetch data
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
